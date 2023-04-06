@@ -32,6 +32,8 @@ torch = { url = "https://download.pytorch.org/whl/cu116/torch-1.12.1%2Bcu116-cp3
 seaborn = "^0.12.2"
 plotly = "^5.14.1"
 nbformat = "^5.8.0"
+sklearn = "^0.0.post1"
+scikit-learn = "^1.2.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
