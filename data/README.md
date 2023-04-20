@@ -1,10 +1,9 @@
 # data directory
 ```
 ├── mobile/                                 <-モバイル空間統計データ
+|   |──Kyoto/                                <京都各エリアのデータ
 │   ├──original/                            <-届いたまんまでおいてある
 │   ├──Tokyostaion_2021/                    <-2021年1月1日から2022年7月31日までの東京駅人流データ
-|        ├──Tokyostation2021.npy         <-'Tokyostation_2021to2022'の人流データを東京駅でかつ2021年のもので絞りnp_aarrayで保存したもの day-hourの２次元
-|        ├──Tokyostation_2021to2022.csv     <-'../original/01_1_東京駅を含むエリアの１年間のデータ_総数.csv'と同じ
 |
 ├── twitter/                                <-ツイッタースクレイピングデータ
 │    ├── Tokyostation_2021/ 
@@ -15,7 +14,9 @@
 |        |── nouse_Kyotostation_2021/ 
          |       ├──Kyotostation_3zi_2021.csv        <-2021年1月1日から12月31日までの京都駅位置情報付きデータ　地域メッシュコード: 5235-36-80 クエリ:'lang:ja bounding_box:[135.75 34.983333333333 135.7625 34.991666666667]'
          |       ├──Kyotostation_3zi_2021.npy  
-         |── Kyotostation_2022/ 
+         |── nouse_Kyotostation_2022/ 
                 ├──Kyotostation_3zi_2022.csv        <-2022年1月1日から12月31日までの京都駅位置情報付きデータ　地域メッシュコード: 5235-36-80 クエリ:'lang:ja bounding_box:[135.75 34.983333333333 135.7625 34.991666666667]'
          |      ├──Kyotostation_3zi_2022.npy  
+         |── npy/                               <-npy形式で保存したツイート数遷移 ./Kyoto　内のcsvファイルから
+         |── proceeed/                           <- ./Kyoto　内のcsvファイルから作成　月, 日, 時間の列を追加
 ```
