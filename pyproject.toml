@@ -35,6 +35,7 @@ nbformat = "^5.8.0"
 sklearn = "^0.0.post1"
 scikit-learn = "^1.2.2"
 statsmodels = "^0.13.5"
+kaleido = "0.2.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
