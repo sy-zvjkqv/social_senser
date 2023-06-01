@@ -143,14 +143,14 @@ for i in range(0, len(list_mobile)):
     ax3_2 = fig.add_subplot(3, 3, 8)
     ax3_3 = fig.add_subplot(3, 3, 9)
 
-    ax1_1.set_title("users day")
-    ax1_2.set_title("tweets day")
+    ax1_1.set_title("population day")
+    ax1_2.set_title("twitter users day")
     ax1_3.set_title("prob day")
-    ax2_1.set_title("users hour")
-    ax2_2.set_title("tweets hour")
+    ax2_1.set_title("population hour")
+    ax2_2.set_title("twitter users hour")
     ax2_3.set_title("prob hour")
-    ax3_1.set_title("users day of week")
-    ax3_2.set_title("tweets day of week")
+    ax3_1.set_title("population day of week")
+    ax3_2.set_title("twitter users day of week")
     ax3_3.set_title("prob day of week")
 
     ax1_1.set_xticks(
