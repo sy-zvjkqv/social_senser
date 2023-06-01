@@ -67,20 +67,18 @@ for i in range(0, len(list_mobile)):
     mobile_flatten = mobile.flatten()
     tweets_flatten = tweets.flatten()
 
-    data = np.stack([tweets_flatten, mobile_flatten])
-    df = pd.DataFrame(data = data.T, columns=['tweets_num', 'mobile'])
+    tmp = np.stack([tweets_flatten, mobile_flatten])
+    df_mobile_tweets = pd.DataFrame(data = tmp.T, columns=['Tweets_num', 'Population'])
 
 
-    ticks_l = []
-    ticks_r = []
-    for i in range(0, max(df['tweets_num'])+1):
-        ticks_l.append(i)
-        ticks_r.append(i)
+    x_axis = []
+    for i in range(0, max(df_mobile_tweets['Tweets_num'])+1):
+        x_axis.append(i)
 
 
     a, b = np.polyfit(tweets_flatten, mobile_flatten, 1)
-    y2 = a * np.array(ticks_l) + b
-    data = pd.DataFrame(np.stack((ticks_l, y2)).T, columns=['Tweets_num', 'population'])
+    y2 = a * np.array(x_axis) + b
+    df2glaph = pd.DataFrame(np.stack((x_axis, y2)).T, columns=['Tweets_num', 'Population'])
 
     X = mobile_flatten.reshape(-1,1)
     y = tweets_flatten.reshape(-1,1)
@@ -90,12 +88,12 @@ for i in range(0, len(list_mobile)):
     #フィッティング直線
 
     plt.figure(figsize=(15, 10))
-    sns.violinplot(x='tweets_num', y='mobile', data = df)
-    sns.regplot(x='Tweets_num', y='population', data=data)
-    plt.xticks(ticks_l, ticks_r)
+    sns.violinplot(x='Tweets_num', y='Population', data=df_mobile_tweets)
+    sns.regplot(x='Tweets_num', y='Population', data=df2glaph)
+    #plt.xticks(x_axis, x_axis)
     plt.xlabel('Number of Tweets')
     plt.ylabel('Populations')
-    plt.title("{} F-test={:.2f}, MI={:.2f}".format(name_key, f_test[0], mi[0]), fontsize=16)
+    plt.title("{} MI={:.2f}".format(name_key, mi[0]), fontsize=16)
 
     save_PATH = (
         "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/violin/"
