@@ -208,40 +208,98 @@ for i in range(0, len(list_mobile)):
     mobile = np.load(list_mobile[i])
     tweets = np.load(list_twitter[i])
     name_key = list_key[i]
-    mobile_flatten = mobile.flatten()
-    tweets_flatten = tweets.flatten()
 
-    tmp = np.stack([tweets_flatten, mobile_flatten])
-    df_mobile_tweets = pd.DataFrame(data=tmp.T, columns=["Tweets_num", "Population"])
+    mobile_asa = mobile[:, 0:7]
+    mobile_hiru = mobile[:, 8:15]
+    mobile_ban = mobile[:, 16:23]
 
+    tweets_asa = tweets[:, 0:7]
+    tweets_hiru = tweets[:, 8:15]
+    tweets_ban = tweets[:, 16:23]
+
+    mobile_asa_flatten = mobile_asa.flatten()
+    tweets_asa_flatten = tweets_asa.flatten()
+    mobile_hiru_flatten = mobile_hiru.flatten()
+    tweets_hiru_flatten = tweets_hiru.flatten()
+    mobile_ban_flatten = mobile_ban.flatten()
+    tweets_ban_flatten = tweets_ban.flatten()
+
+    df_asa = pd.DataFrame(
+        data=np.stack([tweets_asa_flatten, mobile_asa_flatten]).T,
+        columns=["Tweets_num", "Population"],
+    )
+    df_hiru = pd.DataFrame(
+        data=np.stack([tweets_hiru_flatten, mobile_hiru_flatten]).T,
+        columns=["Tweets_num", "Population"],
+    )
+    df_ban = pd.DataFrame(
+        data=np.stack([tweets_ban_flatten, mobile_ban_flatten]).T,
+        columns=["Tweets_num", "Population"],
+    )
+
+    fig = plt.figure(figsize=(20, 16))
+    fig.suptitle(name_key, fontsize=16)
+    ax1_1 = fig.add_subplot(3, 1, 1)
+    ax1_2 = fig.add_subplot(3, 1, 2)
+    ax1_3 = fig.add_subplot(3, 1, 3)
+
+    # x_axis = []
+    # for i in range(0, max(df_asa['Tweets_num'])+1):
+    #     x_axis.append(i)
+
+    X = mobile_asa_flatten.reshape(-1, 1)
+    y = tweets_asa_flatten.reshape(-1, 1)
+    mi_asa = mutual_info_regression(X, y)
+
+    X = mobile_hiru_flatten.reshape(-1, 1)
+    y = tweets_hiru_flatten.reshape(-1, 1)
+    mi_hiru = mutual_info_regression(X, y)
+
+    X = mobile_ban_flatten.reshape(-1, 1)
+    y = tweets_ban_flatten.reshape(-1, 1)
+    mi_ban = mutual_info_regression(X, y)
+
+    plt.figure(figsize=(15, 10))
+    sns.boxplot(x="Tweets_num", y="Population", data=df_asa, ax=ax1_1)
     x_axis = []
-    for i in range(0, max(df_mobile_tweets["Tweets_num"]) + 1):
+    for i in range(0, max(df_asa["Tweets_num"]) + 1):
         x_axis.append(i)
-
-    a, b = np.polyfit(tweets_flatten, mobile_flatten, 1)
+    a, b = np.polyfit(tweets_asa_flatten, mobile_asa_flatten, 1)
     y2 = a * np.array(x_axis) + b
     df2glaph = pd.DataFrame(
         np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
     )
+    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_1)
 
-    X = mobile_flatten.reshape(-1, 1)
-    y = tweets_flatten.reshape(-1, 1)
-    a, b = np.polyfit(X[:, 0], y, 1)
-    mi = mutual_info_regression(X, y)
-    f_test, _ = f_regression(X, y)
-    # フィッティング直線
+    sns.boxplot(x="Tweets_num", y="Population", data=df_hiru, ax=ax1_2)
+    x_axis = []
+    for i in range(0, max(df_hiru["Tweets_num"]) + 1):
+        x_axis.append(i)
+    a, b = np.polyfit(tweets_hiru_flatten, mobile_hiru_flatten, 1)
+    y2 = a * np.array(x_axis) + b
+    df2glaph = pd.DataFrame(
+        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    )
+    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_2)
 
-    plt.figure(figsize=(15, 10))
-    sns.violinplot(x="Tweets_num", y="Population", data=df_mobile_tweets)
-    # sns.regplot(x='Tweets_num', y='Population', data=df2glaph)
-    # plt.xticks(x_axis, x_axis)
-    plt.xlabel("Number of Twitter Users per 1hour")
-    plt.ylabel("Populations per 1hour")
-    plt.title("{} MI={:.2f}".format(name_key, mi[0]), fontsize=16)
+    sns.boxplot(x="Tweets_num", y="Population", data=df_ban, ax=ax1_3)
+    x_axis = []
+    for i in range(0, max(df_ban["Tweets_num"]) + 1):
+        x_axis.append(i)
+    a, b = np.polyfit(tweets_ban_flatten, mobile_ban_flatten, 1)
+    y2 = a * np.array(x_axis) + b
+    df2glaph = pd.DataFrame(
+        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    )
+    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_3)
+
+    ax1_1.set_title("morning MI={:.2f}".format(mi_asa[0]), fontsize=16)
+    ax1_2.set_title("noon MI={:.2f}".format(mi_hiru[0]), fontsize=16)
+    ax1_3.set_title("evening MI={:.2f}".format(mi_ban[0]), fontsize=16)
 
     save_PATH = (
-        "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/violin/"
+        "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/24hour/"
         + name_key
         + ".png"
     )
-    plt.savefig(save_PATH)
+    fig.savefig(save_PATH)
