@@ -89,10 +89,10 @@ for i in range(0, len(list_mobile)):
 
     plt.figure(figsize=(15, 10))
     sns.violinplot(x='Tweets_num', y='Population', data=df_mobile_tweets)
-    sns.regplot(x='Tweets_num', y='Population', data=df2glaph)
+    #sns.regplot(x='Tweets_num', y='Population', data=df2glaph)
     #plt.xticks(x_axis, x_axis)
-    plt.xlabel('Number of Tweets')
-    plt.ylabel('Populations')
+    plt.xlabel('Number of Twitter Users per 1hour')
+    plt.ylabel('Populations per 1hour')
     plt.title("{} MI={:.2f}".format(name_key, mi[0]), fontsize=16)
 
     save_PATH = (
