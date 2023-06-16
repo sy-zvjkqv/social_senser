@@ -364,88 +364,131 @@ for i in range(0, len(list_mobile)):
     mi_Thu = mutual_info_regression(X, y)
 
     #Fri
+    for i in range(0, max(df_Fri['Tweets_num'])):
+        if not max(df_Fri['Tweets_num']==i):
+            df_Fri = pd.concat([df_Fri, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
     sns.boxplot(x="Tweets_num", y="Population", data=df_Fri, ax=ax1_1)
-    x_axis = []
-    for i in range(0, max(df_Fri["Tweets_num"]) + 1):
-        x_axis.append(i)
-    a, b = np.polyfit(list_tweets_Fri, list_mobile_Fri, 1)
-    y2 = a * np.array(x_axis) + b
-    df2glaph = pd.DataFrame(
-        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-    )
-    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_1)
+
+    if max(df_Fri['Tweets_num']) >40:
+        ax1_1.set_xticklabels(ax1_1.get_xticklabels(),rotation = 90)
+    # x_axis = []
+    # for i in range(0, max(df_Fri["Tweets_num"]) + 1):
+    #     x_axis.append(i)
+    # a, b = np.polyfit(list_tweets_Fri, list_mobile_Fri, 1)
+    # y2 = a * np.array(x_axis) + b
+    # df2glaph = pd.DataFrame(
+    #     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    # )
+    # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_1)
 
     #Sat
+    for i in range(0, max(df_Sat['Tweets_num'])):
+        if not max(df_Sat['Tweets_num']==i):
+            df_Sat = pd.concat([df_Sat, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
     sns.boxplot(x="Tweets_num", y="Population", data=df_Sat, ax=ax1_2)
-    x_axis = []
-    for i in range(0, max(df_Sat["Tweets_num"]) + 1):
-        x_axis.append(i)
-    a, b = np.polyfit(list_tweets_Sat, list_mobile_Sat, 1)
-    y2 = a * np.array(x_axis) + b
-    df2glaph = pd.DataFrame(
-        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-    )
-    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_2)
+
+    if max(df_Sat['Tweets_num']) >40:
+        ax1_2.set_xticklabels(ax1_2.get_xticklabels(),rotation = 90)
+
+    # x_axis = []
+    # for i in range(0, max(df_Sat["Tweets_num"]) + 1):
+    #     x_axis.append(i)
+    # a, b = np.polyfit(list_tweets_Sat, list_mobile_Sat, 1)
+    # y2 = a * np.array(x_axis) + b
+    # df2glaph = pd.DataFrame(
+    #     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    # )
+    # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_2)
 
     #Sun
+    for i in range(0, max(df_Sun['Tweets_num'])):
+        if not max(df_Sun['Tweets_num']==i):
+            df_Sun = pd.concat([df_Sun, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
     sns.boxplot(x="Tweets_num", y="Population", data=df_Sun, ax=ax1_3)
-    x_axis = []
-    for i in range(0, max(df_Sun["Tweets_num"]) + 1):
-        x_axis.append(i)
-    a, b = np.polyfit(list_tweets_Sun, list_mobile_Sun, 1)
-    y2 = a * np.array(x_axis) + b
-    df2glaph = pd.DataFrame(
-        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-    )
-    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_3)
+
+    if max(df_Sun['Tweets_num']) >40:
+        ax1_3.set_xticklabels(ax1_3.get_xticklabels(),rotation = 90)
+    # x_axis = []
+    # for i in range(0, max(df_Sun["Tweets_num"]) + 1):
+    #     x_axis.append(i)
+    # a, b = np.polyfit(list_tweets_Sun, list_mobile_Sun, 1)
+    # y2 = a * np.array(x_axis) + b
+    # df2glaph = pd.DataFrame(
+    #     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    # )
+    # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_3)
 
     #Mon
+    for i in range(0, max(df_Mon['Tweets_num'])):
+        if not max(df_Mon['Tweets_num']==i):
+            df_Mon = pd.concat([df_Mon, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
     sns.boxplot(x="Tweets_num", y="Population", data=df_Mon, ax=ax1_4)
-    x_axis = []
-    for i in range(0, max(df_Mon["Tweets_num"]) + 1):
-        x_axis.append(i)
-    a, b = np.polyfit(list_tweets_Mon, list_mobile_Mon, 1)
-    y2 = a * np.array(x_axis) + b
-    df2glaph = pd.DataFrame(
-        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-    )
-    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_4)
+
+    if max(df_Mon['Tweets_num']) >40:
+        ax1_4.set_xticklabels(ax1_4.get_xticklabels(),rotation = 90)
+    # x_axis = []
+    # for i in range(0, max(df_Mon["Tweets_num"]) + 1):
+    #     x_axis.append(i)
+    # a, b = np.polyfit(list_tweets_Mon, list_mobile_Mon, 1)
+    # y2 = a * np.array(x_axis) + b
+    # df2glaph = pd.DataFrame(
+    #     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    # )
+    # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_4)
 
     #Tue
+    for i in range(0, max(df_Tue['Tweets_num'])):
+        if not max(df_Tue['Tweets_num']==i):
+            df_Tue = pd.concat([df_Tue, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
     sns.boxplot(x="Tweets_num", y="Population", data=df_Tue, ax=ax1_5)
-    x_axis = []
-    for i in range(0, max(df_Thu["Tweets_num"]) + 1):
-        x_axis.append(i)
-    a, b = np.polyfit(list_tweets_Thu, list_mobile_Thu, 1)
-    y2 = a * np.array(x_axis) + b
-    df2glaph = pd.DataFrame(
-        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-    )
-    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_5)
+
+    if max(df_Tue['Tweets_num']) >40:
+        ax1_5.set_xticklabels(ax1_5.get_xticklabels(),rotation = 90)
+    # x_axis = []
+    # for i in range(0, max(df_Thu["Tweets_num"]) + 1):
+    #     x_axis.append(i)
+    # a, b = np.polyfit(list_tweets_Thu, list_mobile_Thu, 1)
+    # y2 = a * np.array(x_axis) + b
+    # df2glaph = pd.DataFrame(
+    #     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    # )
+    # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_5)
 
     #Wed
+    for i in range(0, max(df_Wed['Tweets_num'])):
+        if not max(df_Wed['Tweets_num']==i):
+            df_Wed = pd.concat([df_Wed, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
     sns.boxplot(x="Tweets_num", y="Population", data=df_Wed, ax=ax1_6)
-    x_axis = []
-    for i in range(0, max(df_Wed["Tweets_num"]) + 1):
-        x_axis.append(i)
-    a, b = np.polyfit(list_tweets_Wed, list_mobile_Wed, 1)
-    y2 = a * np.array(x_axis) + b
-    df2glaph = pd.DataFrame(
-        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-    )
-    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_6)
+
+    if max(df_Wed['Tweets_num']) >40:
+        ax1_6.set_xticklabels(ax1_6.get_xticklabels(),rotation = 90)
+    # x_axis = []
+    # for i in range(0, max(df_Wed["Tweets_num"]) + 1):
+    #     x_axis.append(i)
+    # a, b = np.polyfit(list_tweets_Wed, list_mobile_Wed, 1)
+    # y2 = a * np.array(x_axis) + b
+    # df2glaph = pd.DataFrame(
+    #     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    # )
+    # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_6)
 
     #Thu
+    for i in range(0, max(df_Thu['Tweets_num'])):
+        if not max(df_Thu['Tweets_num']==i):
+            df_Thu = pd.concat([df_Thu, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
     sns.boxplot(x="Tweets_num", y="Population", data=df_Thu, ax=ax1_7)
-    x_axis = []
-    for i in range(0, max(df_Thu["Tweets_num"]) + 1):
-        x_axis.append(i)
-    a, b = np.polyfit(list_tweets_Thu, list_mobile_Thu, 1)
-    y2 = a * np.array(x_axis) + b
-    df2glaph = pd.DataFrame(
-        np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-    )
-    sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_7)
+
+    if max(df_Thu['Tweets_num']) >40:
+        ax1_7.set_xticklabels(ax1_7.get_xticklabels(),rotation = 90)
+    # x_axis = []
+    # for i in range(0, max(df_Thu["Tweets_num"]) + 1):
+    #     x_axis.append(i)
+    # a, b = np.polyfit(list_tweets_Thu, list_mobile_Thu, 1)
+    # y2 = a * np.array(x_axis) + b
+    # df2glaph = pd.DataFrame(
+    #     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+    # )
+    # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_7)
 
 
 
