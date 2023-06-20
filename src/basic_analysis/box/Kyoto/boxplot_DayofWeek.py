@@ -145,7 +145,7 @@ for month in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
     for day in day_list:
         for hour in range(0, 24):
             hour = str(hour)
-            key = int("21" + month + day + hour)
+            key = int("22" + month + day + hour)
             key = str(key)
             x_label.append(key)
 
@@ -225,25 +225,25 @@ for i in range(0, len(list_mobile)):
     list_tweets_Fri = []
     list_tweets_Sat = []
     for i in range(0, 365):
-        if i % 7 == 0:
+        if i % 7 == 6:
             list_mobile_Fri.append(mobile[i].tolist())
             list_tweets_Fri.append(tweets[i].tolist())
-        if i % 7 == 1:
+        if i % 7 == 0:
             list_mobile_Sat.append(mobile[i].tolist())
             list_tweets_Sat.append(tweets[i].tolist())
-        if i % 7 == 2:
+        if i % 7 == 1:
             list_mobile_Sun.append(mobile[i].tolist())
             list_tweets_Sun.append(tweets[i].tolist())
-        if i % 7 == 3:
+        if i % 7 == 2:
             list_mobile_Mon.append(mobile[i].tolist())
             list_tweets_Mon.append(tweets[i].tolist())
-        if i % 7 == 4:
+        if i % 7 == 3:
             list_mobile_Tue.append(mobile[i].tolist())
             list_tweets_Tue.append(tweets[i].tolist())
-        if i % 7 == 5:
+        if i % 7 == 4:
             list_mobile_Wed.append(mobile[i].tolist())
             list_tweets_Wed.append(tweets[i].tolist())
-        if i % 7 == 6:
+        if i % 7 == 5:
             list_mobile_Thu.append(mobile[i].tolist())
             list_tweets_Thu.append(tweets[i].tolist())
 
