@@ -367,7 +367,7 @@ for i in range(0, len(list_mobile)):
     for i in range(0, max(df_Fri['Tweets_num'])):
         if not max(df_Fri['Tweets_num']==i):
             df_Fri = pd.concat([df_Fri, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-    sns.boxplot(x="Tweets_num", y="Population", data=df_Fri, ax=ax1_1)
+    sns.boxplot(x="Tweets_num", y="Population", data=df_Fri, ax=ax1_1, whis=100)
 
     if max(df_Fri['Tweets_num']) >40:
         ax1_1.set_xticklabels(ax1_1.get_xticklabels(),rotation = 90)
@@ -385,7 +385,7 @@ for i in range(0, len(list_mobile)):
     for i in range(0, max(df_Sat['Tweets_num'])):
         if not max(df_Sat['Tweets_num']==i):
             df_Sat = pd.concat([df_Sat, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-    sns.boxplot(x="Tweets_num", y="Population", data=df_Sat, ax=ax1_2)
+    sns.boxplot(x="Tweets_num", y="Population", data=df_Sat, ax=ax1_2, whis=100)
 
     if max(df_Sat['Tweets_num']) >40:
         ax1_2.set_xticklabels(ax1_2.get_xticklabels(),rotation = 90)
@@ -404,7 +404,7 @@ for i in range(0, len(list_mobile)):
     for i in range(0, max(df_Sun['Tweets_num'])):
         if not max(df_Sun['Tweets_num']==i):
             df_Sun = pd.concat([df_Sun, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-    sns.boxplot(x="Tweets_num", y="Population", data=df_Sun, ax=ax1_3)
+    sns.boxplot(x="Tweets_num", y="Population", data=df_Sun, ax=ax1_3, whis=100)
 
     if max(df_Sun['Tweets_num']) >40:
         ax1_3.set_xticklabels(ax1_3.get_xticklabels(),rotation = 90)
@@ -422,7 +422,7 @@ for i in range(0, len(list_mobile)):
     for i in range(0, max(df_Mon['Tweets_num'])):
         if not max(df_Mon['Tweets_num']==i):
             df_Mon = pd.concat([df_Mon, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-    sns.boxplot(x="Tweets_num", y="Population", data=df_Mon, ax=ax1_4)
+    sns.boxplot(x="Tweets_num", y="Population", data=df_Mon, ax=ax1_4, whis=100)
 
     if max(df_Mon['Tweets_num']) >40:
         ax1_4.set_xticklabels(ax1_4.get_xticklabels(),rotation = 90)
@@ -440,7 +440,7 @@ for i in range(0, len(list_mobile)):
     for i in range(0, max(df_Tue['Tweets_num'])):
         if not max(df_Tue['Tweets_num']==i):
             df_Tue = pd.concat([df_Tue, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-    sns.boxplot(x="Tweets_num", y="Population", data=df_Tue, ax=ax1_5)
+    sns.boxplot(x="Tweets_num", y="Population", data=df_Tue, ax=ax1_5, whis=100)
 
     if max(df_Tue['Tweets_num']) >40:
         ax1_5.set_xticklabels(ax1_5.get_xticklabels(),rotation = 90)
@@ -458,7 +458,7 @@ for i in range(0, len(list_mobile)):
     for i in range(0, max(df_Wed['Tweets_num'])):
         if not max(df_Wed['Tweets_num']==i):
             df_Wed = pd.concat([df_Wed, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-    sns.boxplot(x="Tweets_num", y="Population", data=df_Wed, ax=ax1_6)
+    sns.boxplot(x="Tweets_num", y="Population", data=df_Wed, ax=ax1_6, whis=100)
 
     if max(df_Wed['Tweets_num']) >40:
         ax1_6.set_xticklabels(ax1_6.get_xticklabels(),rotation = 90)
@@ -476,7 +476,7 @@ for i in range(0, len(list_mobile)):
     for i in range(0, max(df_Thu['Tweets_num'])):
         if not max(df_Thu['Tweets_num']==i):
             df_Thu = pd.concat([df_Thu, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-    sns.boxplot(x="Tweets_num", y="Population", data=df_Thu, ax=ax1_7)
+    sns.boxplot(x="Tweets_num", y="Population", data=df_Thu, ax=ax1_7, whis=100)
 
     if max(df_Thu['Tweets_num']) >40:
         ax1_7.set_xticklabels(ax1_7.get_xticklabels(),rotation = 90)

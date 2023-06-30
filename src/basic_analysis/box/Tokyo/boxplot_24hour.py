@@ -208,7 +208,7 @@ plt.figure(figsize=(15, 10))
 for i in range(0, max(df_asa['Tweets_num'])):
     if not max(df_asa['Tweets_num']==i):
         df_asa = pd.concat([df_asa, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-sns.boxplot(x="Tweets_num", y="Population", data=df_asa, ax=ax1_1)
+sns.boxplot(x="Tweets_num", y="Population", data=df_asa, ax=ax1_1, whis=100)
 # x_axis = []
 # for i in range(0, max(df_asa["Tweets_num"]) + 1):
 #     x_axis.append(i)
@@ -223,7 +223,7 @@ for i in range(0, max(df_hiru['Tweets_num'])):
     if not max(df_hiru['Tweets_num']==i):
         df_hiru = pd.concat([df_hiru, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
 
-sns.boxplot(x="Tweets_num", y="Population", data=df_hiru, ax=ax1_2)
+sns.boxplot(x="Tweets_num", y="Population", data=df_hiru, ax=ax1_2, whis=100)
 # x_axis = []
 # for i in range(0, max(df_hiru["Tweets_num"]) + 1):
 #     x_axis.append(i)
@@ -236,7 +236,7 @@ sns.boxplot(x="Tweets_num", y="Population", data=df_hiru, ax=ax1_2)
 for i in range(0, max(df_ban['Tweets_num'])):
     if not max(df_ban['Tweets_num']==i):
         df_ban = pd.concat([df_ban, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-sns.boxplot(x="Tweets_num", y="Population", data=df_ban, ax=ax1_3)
+sns.boxplot(x="Tweets_num", y="Population", data=df_ban, ax=ax1_3, whis=100)
 # x_axis = []
 # for i in range(0, max(df_ban["Tweets_num"]) + 1):
 #     x_axis.append(i)
