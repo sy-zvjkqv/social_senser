@@ -154,102 +154,192 @@ mobile = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/da
 tweets = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy')
 name_key = 'Tokyostation'
 
-mobile_asa = mobile[:, 0:7]
-mobile_hiru = mobile[:, 8:15]
-mobile_ban = mobile[:, 16:23]
+mobile_0to3 = mobile[:, 0:3]
+mobile_4to6 = mobile[:, 4:6]
+mobile_7to9 = mobile[:, 7:9]
+mobile_10to12 = mobile[:, 10:12]
+mobile_13to15 = mobile[:, 13:15]
+mobile_16to18 = mobile[:, 16:18]
+mobile_19to21 = mobile[:, 19:21]
+mobile_22to24 = mobile[:, 22:24]
 
-tweets_asa = tweets[:, 0:7]
-tweets_hiru = tweets[:, 8:15]
-tweets_ban = tweets[:, 16:23]
+tweets_0to3 = tweets[:, 0:3]
+tweets_4to6 = tweets[:, 4:6]
+tweets_7to9 = tweets[:, 7:9]
+tweets_10to12 = tweets[:, 10:12]
+tweets_13to15 = tweets[:, 13:15]
+tweets_16to18 = tweets[:, 16:18]
+tweets_19to21 = tweets[:, 19:21]
+tweets_22to24 = tweets[:, 22:24]
 
-mobile_asa_flatten = mobile_asa.flatten()
-tweets_asa_flatten = tweets_asa.flatten()
-mobile_hiru_flatten = mobile_hiru.flatten()
-tweets_hiru_flatten = tweets_hiru.flatten()
-mobile_ban_flatten = mobile_ban.flatten()
-tweets_ban_flatten = tweets_ban.flatten()
+mobile_0to3_flatten = mobile_0to3.flatten()
+mobile_4to6_flatten = mobile_4to6.flatten()
+mobile_7to9_flatten = mobile_7to9.flatten()
+mobile_10to12_flatten = mobile_10to12.flatten()
+mobile_13to15_flatten = mobile_13to15.flatten()
+mobile_16to18_flatten = mobile_16to18.flatten()
+mobile_19to21_flatten = mobile_19to21.flatten()
+mobile_22to24_flatten = mobile_22to24.flatten()
 
-df_asa = pd.DataFrame(
-    data=np.stack([tweets_asa_flatten, mobile_asa_flatten]).T,
+tweets_0to3_flatten = tweets_0to3.flatten()
+tweets_4to6_flatten = tweets_4to6.flatten()
+tweets_7to9_flatten = tweets_7to9.flatten()
+tweets_10to12_flatten = tweets_10to12.flatten()
+tweets_13to15_flatten = tweets_13to15.flatten()
+tweets_16to18_flatten = tweets_16to18.flatten()
+tweets_19to21_flatten = tweets_19to21.flatten()
+tweets_22to24_flatten = tweets_22to24.flatten()
+
+
+df_0to3 = pd.DataFrame(
+    data=np.stack([tweets_0to3_flatten, mobile_0to3_flatten]).T,
     columns=["Tweets_num", "Population"],
 )
-df_hiru = pd.DataFrame(
-    data=np.stack([tweets_hiru_flatten, mobile_hiru_flatten]).T,
+df_4to6 = pd.DataFrame(
+    data=np.stack([tweets_4to6_flatten, mobile_4to6_flatten]).T,
     columns=["Tweets_num", "Population"],
 )
-df_ban = pd.DataFrame(
-    data=np.stack([tweets_ban_flatten, mobile_ban_flatten]).T,
+df_7to9 = pd.DataFrame(
+    data=np.stack([tweets_7to9_flatten, mobile_7to9_flatten]).T,
+    columns=["Tweets_num", "Population"],
+)
+
+df_10to12 = pd.DataFrame(
+    data=np.stack([tweets_10to12_flatten, mobile_10to12_flatten]).T,
+    columns=["Tweets_num", "Population"],
+)
+
+df_13to15 = pd.DataFrame(
+    data=np.stack([tweets_13to15_flatten, mobile_13to15_flatten]).T,
+    columns=["Tweets_num", "Population"],
+)
+
+df_16to18 = pd.DataFrame(
+    data=np.stack([tweets_16to18_flatten, mobile_16to18_flatten]).T,
+    columns=["Tweets_num", "Population"],
+)
+
+df_19to21 = pd.DataFrame(
+    data=np.stack([tweets_19to21_flatten, mobile_19to21_flatten]).T,
+    columns=["Tweets_num", "Population"],
+)
+
+df_22to24 = pd.DataFrame(
+    data=np.stack([tweets_22to24_flatten, mobile_22to24_flatten]).T,
     columns=["Tweets_num", "Population"],
 )
 
 fig = plt.figure(figsize=(20, 16))
+fig.subplots_adjust(wspace=0.4, hspace=0.6)
 fig.suptitle(name_key, fontsize=16)
-ax1_1 = fig.add_subplot(3, 1, 1)
-ax1_2 = fig.add_subplot(3, 1, 2)
-ax1_3 = fig.add_subplot(3, 1, 3)
+ax1_1 = fig.add_subplot(4, 2, 1)
+ax1_2 = fig.add_subplot(4, 2, 2)
+ax2_1 = fig.add_subplot(4, 2, 3)
+ax2_2 = fig.add_subplot(4, 2, 4)
+ax3_1 = fig.add_subplot(4, 2, 5)
+ax3_2 = fig.add_subplot(4, 2, 6)
+ax4_1 = fig.add_subplot(4, 2, 7)
+ax4_2 = fig.add_subplot(4, 2, 8)
+
 
 # x_axis = []
-# for i in range(0, max(df_asa['Tweets_num'])+1):
+# for i in range(0, max(df_0to3['Tweets_num'])+1):
 #     x_axis.append(i)
 
-X = mobile_asa_flatten.reshape(-1, 1)
-y = tweets_asa_flatten.reshape(-1, 1)
-mi_asa = mutual_info_regression(X, y)
+X = mobile_0to3_flatten.reshape(-1, 1)
+y = tweets_0to3_flatten.reshape(-1, 1)
+mi_0to3 = mutual_info_regression(X, y)
 
-X = mobile_hiru_flatten.reshape(-1, 1)
-y = tweets_hiru_flatten.reshape(-1, 1)
-mi_hiru = mutual_info_regression(X, y)
+X = mobile_4to6_flatten.reshape(-1, 1)
+y = tweets_4to6_flatten.reshape(-1, 1)
+mi_4to6 = mutual_info_regression(X, y)
 
-X = mobile_ban_flatten.reshape(-1, 1)
-y = tweets_ban_flatten.reshape(-1, 1)
-mi_ban = mutual_info_regression(X, y)
+X = mobile_7to9_flatten.reshape(-1, 1)
+y = tweets_7to9_flatten.reshape(-1, 1)
+mi_7to9 = mutual_info_regression(X, y)
+
+X = mobile_10to12_flatten.reshape(-1, 1)
+y = tweets_10to12_flatten.reshape(-1, 1)
+mi_10to12 = mutual_info_regression(X, y)
+
+X = mobile_13to15_flatten.reshape(-1, 1)
+y = tweets_13to15_flatten.reshape(-1, 1)
+mi_13to15 = mutual_info_regression(X, y)
+
+X = mobile_16to18_flatten.reshape(-1, 1)
+y = tweets_16to18_flatten.reshape(-1, 1)
+mi_16to18 = mutual_info_regression(X, y)
+
+X = mobile_19to21_flatten.reshape(-1, 1)
+y = tweets_19to21_flatten.reshape(-1, 1)
+mi_19to21 = mutual_info_regression(X, y)
+
+X = mobile_22to24_flatten.reshape(-1, 1)
+y = tweets_22to24_flatten.reshape(-1, 1)
+mi_22to24 = mutual_info_regression(X, y)
 
 plt.figure(figsize=(15, 10))
-for i in range(0, max(df_asa['Tweets_num'])):
-    if not max(df_asa['Tweets_num']==i):
-        df_asa = pd.concat([df_asa, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-sns.boxplot(x="Tweets_num", y="Population", data=df_asa, ax=ax1_1, whis=100)
-# x_axis = []
-# for i in range(0, max(df_asa["Tweets_num"]) + 1):
-#     x_axis.append(i)
-# a, b = np.polyfit(tweets_asa_flatten, mobile_asa_flatten, 1)
-# y2 = a * np.array(x_axis) + b
-# df2glaph = pd.DataFrame(
-#     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-# )
-# sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_1)
+for i in range(0, max(df_0to3['Tweets_num'])):
+    if not max(df_0to3['Tweets_num']==i):
+        df_0to3 = pd.concat([df_0to3, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+sns.boxplot(x="Tweets_num", y="Population", data=df_0to3, ax=ax1_1, whis=100)
 
-for i in range(0, max(df_hiru['Tweets_num'])):
-    if not max(df_hiru['Tweets_num']==i):
-        df_hiru = pd.concat([df_hiru, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
 
-sns.boxplot(x="Tweets_num", y="Population", data=df_hiru, ax=ax1_2, whis=100)
-# x_axis = []
-# for i in range(0, max(df_hiru["Tweets_num"]) + 1):
-#     x_axis.append(i)
-# a, b = np.polyfit(tweets_hiru_flatten, mobile_hiru_flatten, 1)
-# y2 = a * np.array(x_axis) + b
-# df2glaph = pd.DataFrame(
-#     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-# )
-# sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_2)
-for i in range(0, max(df_ban['Tweets_num'])):
-    if not max(df_ban['Tweets_num']==i):
-        df_ban = pd.concat([df_ban, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
-sns.boxplot(x="Tweets_num", y="Population", data=df_ban, ax=ax1_3, whis=100)
-# x_axis = []
-# for i in range(0, max(df_ban["Tweets_num"]) + 1):
-#     x_axis.append(i)
-# a, b = np.polyfit(tweets_ban_flatten, mobile_ban_flatten, 1)
-# y2 = a * np.array(x_axis) + b
-# df2glaph = pd.DataFrame(
-#     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
-# )
-# sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_3)
+for i in range(0, max(df_4to6['Tweets_num'])):
+    if not max(df_4to6['Tweets_num']==i):
+        df_4to6 = pd.concat([df_4to6, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
 
-ax1_1.set_title("morning MI={:.2f}".format(mi_asa[0]), fontsize=16)
-ax1_2.set_title("noon MI={:.2f}".format(mi_hiru[0]), fontsize=16)
-ax1_3.set_title("evening MI={:.2f}".format(mi_ban[0]), fontsize=16)
+sns.boxplot(x="Tweets_num", y="Population", data=df_4to6, ax=ax1_2, whis=100)
+
+for i in range(0, max(df_7to9['Tweets_num'])):
+    if not max(df_7to9['Tweets_num']==i):
+        df_7to9 = pd.concat([df_7to9, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+sns.boxplot(x="Tweets_num", y="Population", data=df_7to9, ax=ax2_1, whis=100)
+
+for i in range(0, max(df_10to12['Tweets_num'])):
+    if not max(df_10to12['Tweets_num']==i):
+        df_10to12 = pd.concat([df_10to12, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+sns.boxplot(x="Tweets_num", y="Population", data=df_10to12, ax=ax2_2, whis=100)
+
+for i in range(0, max(df_13to15['Tweets_num'])):
+    if not max(df_13to15['Tweets_num']==i):
+        df_13to15 = pd.concat([df_13to15, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+sns.boxplot(x="Tweets_num", y="Population", data=df_13to15, ax=ax3_1, whis=100)
+
+for i in range(0, max(df_16to18['Tweets_num'])):
+    if not max(df_16to18['Tweets_num']==i):
+        df_16to18 = pd.concat([df_16to18, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+sns.boxplot(x="Tweets_num", y="Population", data=df_16to18, ax=ax3_2, whis=100)
+
+for i in range(0, max(df_19to21['Tweets_num'])):
+    if not max(df_19to21['Tweets_num']==i):
+        df_19to21 = pd.concat([df_19to21, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+sns.boxplot(x="Tweets_num", y="Population", data=df_19to21, ax=ax4_1, whis=100)
+
+for i in range(0, max(df_22to24['Tweets_num'])):
+    if not max(df_22to24['Tweets_num']==i):
+        df_22to24 = pd.concat([df_22to24, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+sns.boxplot(x="Tweets_num", y="Population", data=df_22to24, ax=ax4_2, whis=100)
+
+
+
+ax1_1.set_title("0to3 MI={:.2f}".format(mi_0to3[0]), fontsize=16)
+ax1_2.set_title("4to6 MI={:.2f}".format(mi_4to6[0]), fontsize=16)
+ax2_1.set_title("7to9 MI={:.2f}".format(mi_7to9[0]), fontsize=16)
+ax2_2.set_title("10to12 MI={:.2f}".format(mi_10to12[0]), fontsize=16)
+ax3_1.set_title("13to15 MI={:.2f}".format(mi_13to15[0]), fontsize=16)
+ax3_2.set_title("16to18 MI={:.2f}".format(mi_16to18[0]), fontsize=16)
+ax4_1.set_title("19to21 MI={:.2f}".format(mi_19to21[0]), fontsize=16)
+ax4_2.set_title("222to24 MI={:.2f}".format(mi_22to24[0]), fontsize=16)
+
+ax1_1.set_xticklabels(ax1_1.get_xticklabels(),rotation = 90)
+ax1_2.set_xticklabels(ax1_2.get_xticklabels(),rotation = 90)
+ax2_1.set_xticklabels(ax2_1.get_xticklabels(),rotation = 90)
+ax2_2.set_xticklabels(ax2_2.get_xticklabels(),rotation = 90)
+ax3_1.set_xticklabels(ax3_1.get_xticklabels(),rotation = 90)
+ax3_2.set_xticklabels(ax3_2.get_xticklabels(),rotation = 90)
+ax4_1.set_xticklabels(ax4_1.get_xticklabels(),rotation = 90)
+ax4_2.set_xticklabels(ax4_2.get_xticklabels(),rotation = 90)
 
 save_PATH = (
     "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/24hour/"
