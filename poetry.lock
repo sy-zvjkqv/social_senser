@@ -654,7 +654,7 @@ test-extra = ["curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.21)", "pa
 name = "isort"
 version = "5.12.0"
 description = "A Python utility / library to sort Python imports."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.8.0"
 files = [
@@ -2411,4 +2411,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e892e7d6edbafea6d350fc964eaf8c5e9910f49ee8192ae83cf7ea37884b3934"
+content-hash = "b1a0b748dbf85675267462c3873af4652e8eb55f9ac0699f68ac760d95276864"

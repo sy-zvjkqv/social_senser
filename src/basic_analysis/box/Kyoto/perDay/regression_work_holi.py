@@ -1,19 +1,17 @@
+import datetime
+
+import jpholiday
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
-import numpy as np
-from scipy import signal
-from scipy import stats
+import plotly.graph_objects as go
+import seaborn as sns
 from matplotlib import mlab
-import matplotlib.pyplot as plt
-import numpy as np
-import matplotlib.pyplot as plt
+from scipy import signal, stats
+from sklearn import preprocessing
 from sklearn.feature_selection import f_regression, mutual_info_regression
 from sklearn.linear_model import LinearRegression
-import plotly.graph_objects as go
-from sklearn import preprocessing
-import matplotlib.cm as cm
-import seaborn as sns
-import datetime
-import jpholiday
 
 day_list_long = [
     "01",
