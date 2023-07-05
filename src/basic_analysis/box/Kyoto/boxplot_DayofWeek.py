@@ -289,8 +289,6 @@ for i in range(0, len(list_mobile)):
     list_mobile_Thu = list_mobile_Thu.flatten()
     list_tweets_Thu = list_tweets_Thu.flatten()
 
-
-
     df_Fri = pd.DataFrame(
         data=np.stack([list_tweets_Fri, list_mobile_Fri]).T,
         columns=["Tweets_num", "Population"],
@@ -363,14 +361,19 @@ for i in range(0, len(list_mobile)):
     y = list_tweets_Thu.reshape(-1, 1)
     mi_Thu = mutual_info_regression(X, y)
 
-    #Fri
-    for i in range(0, max(df_Fri['Tweets_num'])):
-        if not max(df_Fri['Tweets_num']==i):
-            df_Fri = pd.concat([df_Fri, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+    # Fri
+    for i in range(0, max(df_Fri["Tweets_num"])):
+        if not max(df_Fri["Tweets_num"] == i):
+            df_Fri = pd.concat(
+                [
+                    df_Fri,
+                    pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+                ]
+            )
     sns.boxplot(x="Tweets_num", y="Population", data=df_Fri, ax=ax1_1, whis=100)
 
-    if max(df_Fri['Tweets_num']) >40:
-        ax1_1.set_xticklabels(ax1_1.get_xticklabels(),rotation = 90)
+    if max(df_Fri["Tweets_num"]) > 40:
+        ax1_1.set_xticklabels(ax1_1.get_xticklabels(), rotation=90)
     # x_axis = []
     # for i in range(0, max(df_Fri["Tweets_num"]) + 1):
     #     x_axis.append(i)
@@ -381,14 +384,19 @@ for i in range(0, len(list_mobile)):
     # )
     # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_1)
 
-    #Sat
-    for i in range(0, max(df_Sat['Tweets_num'])):
-        if not max(df_Sat['Tweets_num']==i):
-            df_Sat = pd.concat([df_Sat, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+    # Sat
+    for i in range(0, max(df_Sat["Tweets_num"])):
+        if not max(df_Sat["Tweets_num"] == i):
+            df_Sat = pd.concat(
+                [
+                    df_Sat,
+                    pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+                ]
+            )
     sns.boxplot(x="Tweets_num", y="Population", data=df_Sat, ax=ax1_2, whis=100)
 
-    if max(df_Sat['Tweets_num']) >40:
-        ax1_2.set_xticklabels(ax1_2.get_xticklabels(),rotation = 90)
+    if max(df_Sat["Tweets_num"]) > 40:
+        ax1_2.set_xticklabels(ax1_2.get_xticklabels(), rotation=90)
 
     # x_axis = []
     # for i in range(0, max(df_Sat["Tweets_num"]) + 1):
@@ -400,14 +408,19 @@ for i in range(0, len(list_mobile)):
     # )
     # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_2)
 
-    #Sun
-    for i in range(0, max(df_Sun['Tweets_num'])):
-        if not max(df_Sun['Tweets_num']==i):
-            df_Sun = pd.concat([df_Sun, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+    # Sun
+    for i in range(0, max(df_Sun["Tweets_num"])):
+        if not max(df_Sun["Tweets_num"] == i):
+            df_Sun = pd.concat(
+                [
+                    df_Sun,
+                    pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+                ]
+            )
     sns.boxplot(x="Tweets_num", y="Population", data=df_Sun, ax=ax1_3, whis=100)
 
-    if max(df_Sun['Tweets_num']) >40:
-        ax1_3.set_xticklabels(ax1_3.get_xticklabels(),rotation = 90)
+    if max(df_Sun["Tweets_num"]) > 40:
+        ax1_3.set_xticklabels(ax1_3.get_xticklabels(), rotation=90)
     # x_axis = []
     # for i in range(0, max(df_Sun["Tweets_num"]) + 1):
     #     x_axis.append(i)
@@ -418,14 +431,19 @@ for i in range(0, len(list_mobile)):
     # )
     # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_3)
 
-    #Mon
-    for i in range(0, max(df_Mon['Tweets_num'])):
-        if not max(df_Mon['Tweets_num']==i):
-            df_Mon = pd.concat([df_Mon, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+    # Mon
+    for i in range(0, max(df_Mon["Tweets_num"])):
+        if not max(df_Mon["Tweets_num"] == i):
+            df_Mon = pd.concat(
+                [
+                    df_Mon,
+                    pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+                ]
+            )
     sns.boxplot(x="Tweets_num", y="Population", data=df_Mon, ax=ax1_4, whis=100)
 
-    if max(df_Mon['Tweets_num']) >40:
-        ax1_4.set_xticklabels(ax1_4.get_xticklabels(),rotation = 90)
+    if max(df_Mon["Tweets_num"]) > 40:
+        ax1_4.set_xticklabels(ax1_4.get_xticklabels(), rotation=90)
     # x_axis = []
     # for i in range(0, max(df_Mon["Tweets_num"]) + 1):
     #     x_axis.append(i)
@@ -436,14 +454,19 @@ for i in range(0, len(list_mobile)):
     # )
     # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_4)
 
-    #Tue
-    for i in range(0, max(df_Tue['Tweets_num'])):
-        if not max(df_Tue['Tweets_num']==i):
-            df_Tue = pd.concat([df_Tue, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+    # Tue
+    for i in range(0, max(df_Tue["Tweets_num"])):
+        if not max(df_Tue["Tweets_num"] == i):
+            df_Tue = pd.concat(
+                [
+                    df_Tue,
+                    pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+                ]
+            )
     sns.boxplot(x="Tweets_num", y="Population", data=df_Tue, ax=ax1_5, whis=100)
 
-    if max(df_Tue['Tweets_num']) >40:
-        ax1_5.set_xticklabels(ax1_5.get_xticklabels(),rotation = 90)
+    if max(df_Tue["Tweets_num"]) > 40:
+        ax1_5.set_xticklabels(ax1_5.get_xticklabels(), rotation=90)
     # x_axis = []
     # for i in range(0, max(df_Thu["Tweets_num"]) + 1):
     #     x_axis.append(i)
@@ -454,14 +477,19 @@ for i in range(0, len(list_mobile)):
     # )
     # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_5)
 
-    #Wed
-    for i in range(0, max(df_Wed['Tweets_num'])):
-        if not max(df_Wed['Tweets_num']==i):
-            df_Wed = pd.concat([df_Wed, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+    # Wed
+    for i in range(0, max(df_Wed["Tweets_num"])):
+        if not max(df_Wed["Tweets_num"] == i):
+            df_Wed = pd.concat(
+                [
+                    df_Wed,
+                    pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+                ]
+            )
     sns.boxplot(x="Tweets_num", y="Population", data=df_Wed, ax=ax1_6, whis=100)
 
-    if max(df_Wed['Tweets_num']) >40:
-        ax1_6.set_xticklabels(ax1_6.get_xticklabels(),rotation = 90)
+    if max(df_Wed["Tweets_num"]) > 40:
+        ax1_6.set_xticklabels(ax1_6.get_xticklabels(), rotation=90)
     # x_axis = []
     # for i in range(0, max(df_Wed["Tweets_num"]) + 1):
     #     x_axis.append(i)
@@ -472,14 +500,19 @@ for i in range(0, len(list_mobile)):
     # )
     # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_6)
 
-    #Thu
-    for i in range(0, max(df_Thu['Tweets_num'])):
-        if not max(df_Thu['Tweets_num']==i):
-            df_Thu = pd.concat([df_Thu, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+    # Thu
+    for i in range(0, max(df_Thu["Tweets_num"])):
+        if not max(df_Thu["Tweets_num"] == i):
+            df_Thu = pd.concat(
+                [
+                    df_Thu,
+                    pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+                ]
+            )
     sns.boxplot(x="Tweets_num", y="Population", data=df_Thu, ax=ax1_7, whis=100)
 
-    if max(df_Thu['Tweets_num']) >40:
-        ax1_7.set_xticklabels(ax1_7.get_xticklabels(),rotation = 90)
+    if max(df_Thu["Tweets_num"]) > 40:
+        ax1_7.set_xticklabels(ax1_7.get_xticklabels(), rotation=90)
     # x_axis = []
     # for i in range(0, max(df_Thu["Tweets_num"]) + 1):
     #     x_axis.append(i)
@@ -490,9 +523,6 @@ for i in range(0, len(list_mobile)):
     # )
     # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_7)
 
-
-
-
     ax1_1.set_title("Fri MI={:.2f}".format(mi_Fri[0]), fontsize=16)
     ax1_2.set_title("Sat MI={:.2f}".format(mi_Sat[0]), fontsize=16)
     ax1_3.set_title("Sun MI={:.2f}".format(mi_Sun[0]), fontsize=16)
@@ -500,7 +530,6 @@ for i in range(0, len(list_mobile)):
     ax1_5.set_title("Tue MI={:.2f}".format(mi_Tue[0]), fontsize=16)
     ax1_6.set_title("Wed MI={:.2f}".format(mi_Wed[0]), fontsize=16)
     ax1_7.set_title("Thu MI={:.2f}".format(mi_Thu[0]), fontsize=16)
-
 
     save_PATH = (
         "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/DayofWeek/"

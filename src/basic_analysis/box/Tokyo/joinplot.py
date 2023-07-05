@@ -150,22 +150,28 @@ for month in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
             x_label.append(key)
 
 
-
-
-
-mobile = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy')
-tweets = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy')
-name_key = 'Tokyostation'
+mobile = np.load(
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy"
+)
+tweets = np.load(
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy"
+)
+name_key = "Tokyostation"
 mobile_flatten = mobile.flatten()
 tweets_flatten = tweets.flatten()
 
 tmp = np.stack([tweets_flatten, mobile_flatten])
 df_mobile_tweets = pd.DataFrame(data=tmp.T, columns=["Tweets_num", "Population"])
-for i in range(0, max(df_mobile_tweets['Tweets_num'])):
-    if not max(df_mobile_tweets['Tweets_num']==i):
-        df_mobile_tweets = pd.concat([df_mobile_tweets, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_mobile_tweets["Tweets_num"])):
+    if not max(df_mobile_tweets["Tweets_num"] == i):
+        df_mobile_tweets = pd.concat(
+            [
+                df_mobile_tweets,
+                pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+            ]
+        )
 
-            
+
 # x_axis = []
 # for i in range(0, int(max(df_mobile_tweets["Tweets_num"])) + 1):
 #     x_axis.append(i)
@@ -184,13 +190,15 @@ f_test, _ = f_regression(X, y)
 # フィッティング直線
 
 plt.figure(figsize=(15, 10))
-sns.jointplot(x="Tweets_num", y="Population", data=df_mobile_tweets, kind="kde", shade=True)
-#sns.regplot(x="Tweets_num", y="Population", data=df2glaph)
-#plt.xticks(x_axis, x_axis)
+sns.jointplot(
+    x="Tweets_num", y="Population", data=df_mobile_tweets, kind="kde", shade=True
+)
+# sns.regplot(x="Tweets_num", y="Population", data=df2glaph)
+# plt.xticks(x_axis, x_axis)
 plt.xlabel("Number of Twitter Users per 1hour")
 plt.ylabel("Populations per 1hour")
-#plt.title("{} MI={:.2f}".format(name_key, mi[0]), fontsize=16)
-plt.xticks(rotation= 90)
+# plt.title("{} MI={:.2f}".format(name_key, mi[0]), fontsize=16)
+plt.xticks(rotation=90)
 
 save_PATH = (
     "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/join/"

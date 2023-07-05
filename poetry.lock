@@ -701,6 +701,18 @@ files = [
 ]
 
 [[package]]
+name = "jpholiday"
+version = "0.1.8"
+description = "Pure-Python Japan Public Holiday Generate"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "jpholiday-0.1.8-py3-none-any.whl", hash = "sha256:5a2d5e680ea1cc43419882451c95d4c9ab9616127a02670fa03b98b597d88f9a"},
+    {file = "jpholiday-0.1.8.tar.gz", hash = "sha256:385b5877aa8a38bc0818a6eec42ad943b089e3d8969307b9ee27a443f2428438"},
+]
+
+[[package]]
 name = "jsonschema"
 version = "4.17.3"
 description = "An implementation of JSON Schema validation for Python"
@@ -2399,4 +2411,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "62aab9a8f4dc7570131fd8eb1115780c63280ae017aa08f46f7b07d5ec3f9596"
+content-hash = "e892e7d6edbafea6d350fc964eaf8c5e9910f49ee8192ae83cf7ea37884b3934"

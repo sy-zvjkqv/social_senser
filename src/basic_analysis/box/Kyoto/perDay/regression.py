@@ -209,51 +209,43 @@ for i in range(0, len(list_mobile)):
     tweets = np.load(list_twitter[i])
     name_key = list_key[i]
 
-
     mobile = np.sum(mobile, axis=1)
     tweets = np.sum(tweets, axis=1)
 
-
     list_Week_of_Day = []
-    for i in range(0, 365):   
+    for i in range(0, 365):
         if i % 7 == 0:
-            list_Week_of_Day.append('Holiday')
+            list_Week_of_Day.append("Holiday")
         if i % 7 == 1:
-            list_Week_of_Day.append('Holiday')
+            list_Week_of_Day.append("Holiday")
         if i % 7 == 2:
-            list_Week_of_Day.append('Workday')
+            list_Week_of_Day.append("Workday")
         if i % 7 == 3:
-            list_Week_of_Day.append('Workday')
+            list_Week_of_Day.append("Workday")
         if i % 7 == 4:
-            list_Week_of_Day.append('Workday')
+            list_Week_of_Day.append("Workday")
         if i % 7 == 5:
-            list_Week_of_Day.append('Workday')
+            list_Week_of_Day.append("Workday")
         if i % 7 == 6:
-            list_Week_of_Day.append('Workday')
-            
+            list_Week_of_Day.append("Workday")
 
     df = pd.DataFrame(
-        data=np.stack([mobile, tweets ,list_Week_of_Day]).T,
-        columns=[ "Population", "Tweets_num","Week_of_Day"],
+        data=np.stack([mobile, tweets, list_Week_of_Day]).T,
+        columns=["Population", "Tweets_num", "Week_of_Day"],
     )
-    df["Tweets_num"] =df["Tweets_num"].astype(float)
-    df["Population"] =df["Population"].astype(float)
+    df["Tweets_num"] = df["Tweets_num"].astype(float)
+    df["Population"] = df["Population"].astype(float)
 
+    fig = sns.lmplot(x="Tweets_num", y="Population", data=df, ci=None)
 
-
-
-    fig = sns.lmplot(x="Tweets_num", y="Population", data=df , ci=None)
-
-
-    
-    X = mobile.reshape(-1, 1)
-    y = tweets.reshape(-1, 1)
-    a, b = np.polyfit(X[:, 0], y, 1)
-    mi = mutual_info_regression(X, y)
-    f_test, _ = f_regression(X, y)
-
-    fig.set(title = "{} Mi={:.2f}".format(name_key, mi[0]))
-
+    X = mobile
+    y = tweets
+    correlation, p_value = stats.pearsonr(X, y)
+    # print(correlation)
+    # print(p_value)
+    # res = df[["Tweets_num","Population"]].corr()
+    # res = float(res.iloc[1,0])
+    fig.set(title="{}  r={:.2f} p={:.2e}".format(name_key, correlation, p_value))
 
     save_PATH = (
         "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/perDay/regression/"

@@ -289,8 +289,6 @@ for i in range(0, len(list_mobile)):
     list_mobile_Thu = list_mobile_Thu.flatten()
     list_tweets_Thu = list_tweets_Thu.flatten()
 
-
-
     df_Fri = pd.DataFrame(
         data=np.stack([list_tweets_Fri, list_mobile_Fri]).T,
         columns=["Tweets_num", "Population"],
@@ -363,7 +361,7 @@ for i in range(0, len(list_mobile)):
     y = list_tweets_Thu.reshape(-1, 1)
     mi_Thu = mutual_info_regression(X, y)
 
-    #Fri
+    # Fri
     sns.stripplot(x="Tweets_num", y="Population", data=df_Fri, ax=ax1_1)
     x_axis = []
     for i in range(0, max(df_Fri["Tweets_num"]) + 1):
@@ -375,7 +373,7 @@ for i in range(0, len(list_mobile)):
     )
     sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_1)
 
-    #Sat
+    # Sat
     sns.stripplot(x="Tweets_num", y="Population", data=df_Sat, ax=ax1_2)
     x_axis = []
     for i in range(0, max(df_Sat["Tweets_num"]) + 1):
@@ -387,7 +385,7 @@ for i in range(0, len(list_mobile)):
     )
     sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_2)
 
-    #Sun
+    # Sun
     sns.stripplot(x="Tweets_num", y="Population", data=df_Sun, ax=ax1_3)
     x_axis = []
     for i in range(0, max(df_Sun["Tweets_num"]) + 1):
@@ -399,7 +397,7 @@ for i in range(0, len(list_mobile)):
     )
     sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_3)
 
-    #Mon
+    # Mon
     sns.stripplot(x="Tweets_num", y="Population", data=df_Mon, ax=ax1_4)
     x_axis = []
     for i in range(0, max(df_Mon["Tweets_num"]) + 1):
@@ -411,7 +409,7 @@ for i in range(0, len(list_mobile)):
     )
     sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_4)
 
-    #Tue
+    # Tue
     sns.stripplot(x="Tweets_num", y="Population", data=df_Tue, ax=ax1_5)
     x_axis = []
     for i in range(0, max(df_Thu["Tweets_num"]) + 1):
@@ -423,7 +421,7 @@ for i in range(0, len(list_mobile)):
     )
     sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_5)
 
-    #Wed
+    # Wed
     sns.stripplot(x="Tweets_num", y="Population", data=df_Wed, ax=ax1_6)
     x_axis = []
     for i in range(0, max(df_Wed["Tweets_num"]) + 1):
@@ -435,7 +433,7 @@ for i in range(0, len(list_mobile)):
     )
     sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_6)
 
-    #Thu
+    # Thu
     sns.stripplot(x="Tweets_num", y="Population", data=df_Thu, ax=ax1_7)
     x_axis = []
     for i in range(0, max(df_Thu["Tweets_num"]) + 1):
@@ -447,9 +445,6 @@ for i in range(0, len(list_mobile)):
     )
     sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_7)
 
-
-
-
     ax1_1.set_title("Fri MI={:.2f}".format(mi_Fri[0]), fontsize=16)
     ax1_2.set_title("Sat MI={:.2f}".format(mi_Sat[0]), fontsize=16)
     ax1_3.set_title("Sun MI={:.2f}".format(mi_Sun[0]), fontsize=16)
@@ -457,7 +452,6 @@ for i in range(0, len(list_mobile)):
     ax1_5.set_title("Tue MI={:.2f}".format(mi_Tue[0]), fontsize=16)
     ax1_6.set_title("Wed MI={:.2f}".format(mi_Wed[0]), fontsize=16)
     ax1_7.set_title("Thu MI={:.2f}".format(mi_Thu[0]), fontsize=16)
-
 
     save_PATH = (
         "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/swarm/DayofWeek/"

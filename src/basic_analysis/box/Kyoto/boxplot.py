@@ -213,11 +213,15 @@ for i in range(0, len(list_mobile)):
 
     tmp = np.stack([tweets_flatten, mobile_flatten])
     df_mobile_tweets = pd.DataFrame(data=tmp.T, columns=["Tweets_num", "Population"])
-    for i in range(0, max(df_mobile_tweets['Tweets_num'])):
-        if not max(df_mobile_tweets['Tweets_num']==i):
-            df_mobile_tweets = pd.concat([df_mobile_tweets, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+    for i in range(0, max(df_mobile_tweets["Tweets_num"])):
+        if not max(df_mobile_tweets["Tweets_num"] == i):
+            df_mobile_tweets = pd.concat(
+                [
+                    df_mobile_tweets,
+                    pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+                ]
+            )
 
-               
     # x_axis = []
     # for i in range(0, int(max(df_mobile_tweets["Tweets_num"])) + 1):
     #     x_axis.append(i)
@@ -237,8 +241,8 @@ for i in range(0, len(list_mobile)):
 
     plt.figure(figsize=(15, 10))
     sns.boxplot(x="Tweets_num", y="Population", data=df_mobile_tweets, whis=100)
-    #sns.regplot(x="Tweets_num", y="Population", data=df2glaph)
-    #plt.xticks(x_axis, x_axis)
+    # sns.regplot(x="Tweets_num", y="Population", data=df2glaph)
+    # plt.xticks(x_axis, x_axis)
     plt.xlabel("Number of Twitter Users per 1hour")
     plt.ylabel("Populations per 1hour")
     plt.title("{} MI={:.2f}".format(name_key, mi[0]), fontsize=16)

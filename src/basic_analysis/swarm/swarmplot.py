@@ -232,7 +232,7 @@ for i in range(0, len(list_mobile)):
     # フィッティング直線
 
     plt.figure(figsize=(15, 10))
-    sns.stripplot(x="Tweets_num", y="Population", data=df_mobile_tweets,size=2)
+    sns.stripplot(x="Tweets_num", y="Population", data=df_mobile_tweets, size=2)
     sns.regplot(x="Tweets_num", y="Population", data=df2glaph)
     # plt.xticks(x_axis, x_axis)
     plt.xlabel("Number of Twitter Users per 1hour")

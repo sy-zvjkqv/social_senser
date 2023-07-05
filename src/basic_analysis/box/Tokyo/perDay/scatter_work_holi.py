@@ -149,43 +149,47 @@ for month in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
             x_label.append(key)
 
 
-mobile = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy')
-tweets = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy')
-name_key = 'Tokyostation'
+mobile = np.load(
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy"
+)
+tweets = np.load(
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy"
+)
+name_key = "Tokyostation"
 
 mobile = np.sum(mobile, axis=1)
 tweets = np.sum(tweets, axis=1)
 
 
 list_Week_of_Day = []
-for i in range(0, 365):   
+for i in range(0, 365):
     if i % 7 == 1:
-        list_Week_of_Day.append('Holiday')
+        list_Week_of_Day.append("Holiday")
     if i % 7 == 2:
-        list_Week_of_Day.append('Holiday')
+        list_Week_of_Day.append("Holiday")
     if i % 7 == 0:
-        list_Week_of_Day.append('Workday')
+        list_Week_of_Day.append("Workday")
     if i % 7 == 3:
-        list_Week_of_Day.append('Workday')
+        list_Week_of_Day.append("Workday")
     if i % 7 == 4:
-        list_Week_of_Day.append('Workday')
+        list_Week_of_Day.append("Workday")
     if i % 7 == 5:
-        list_Week_of_Day.append('Workday')
+        list_Week_of_Day.append("Workday")
     if i % 7 == 6:
-        list_Week_of_Day.append('Workday')
-        
+        list_Week_of_Day.append("Workday")
+
 
 df = pd.DataFrame(
-    data=np.stack([mobile, tweets ,list_Week_of_Day]).T,
-    columns=[ "Population", "Tweets_num","Week_of_Day"],
+    data=np.stack([mobile, tweets, list_Week_of_Day]).T,
+    columns=["Population", "Tweets_num", "Week_of_Day"],
 )
-df["Tweets_num"] =df["Tweets_num"].astype(float)
-df["Population"] =df["Population"].astype(float)
+df["Tweets_num"] = df["Tweets_num"].astype(float)
+df["Population"] = df["Population"].astype(float)
 
 
-fig = sns.scatterplot(x="Tweets_num", y="Population", hue = 'Week_of_Day',data=df)
-df_work = df[df["Week_of_Day"]=='Workday']
-df_holi = df[df["Week_of_Day"]=='Holiday']
+fig = sns.scatterplot(x="Tweets_num", y="Population", hue="Week_of_Day", data=df)
+df_work = df[df["Week_of_Day"] == "Workday"]
+df_holi = df[df["Week_of_Day"] == "Holiday"]
 
 X = df_work["Population"].to_numpy()
 y = df_work["Tweets_num"].to_numpy()
@@ -202,9 +206,11 @@ y = y.astype(int)
 X = X.reshape(-1, 1)
 y = y.reshape(-1, 1)
 mi_holi = mutual_info_regression(X, y)
-fig.set(title = "{} Mi_workday={:.2f} Mi_holiday={:.2f}".format(name_key, mi_work[0], mi_holi[0]))
-
-
+fig.set(
+    title="{} Mi_workday={:.2f} Mi_holiday={:.2f}".format(
+        name_key, mi_work[0], mi_holi[0]
+    )
+)
 
 
 save_PATH = (

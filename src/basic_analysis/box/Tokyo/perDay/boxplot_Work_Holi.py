@@ -150,9 +150,13 @@ for month in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
             x_label.append(key)
 
 
-mobile = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy')
-tweets = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy')
-name_key = 'Tokyostation'
+mobile = np.load(
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy"
+)
+tweets = np.load(
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy"
+)
+name_key = "Tokyostation"
 
 mobile = np.sum(mobile, axis=1)
 tweets = np.sum(tweets, axis=1)
@@ -193,7 +197,6 @@ list_mobile_holi = np.array(list_mobile_holi)
 list_tweets_holi = np.array(list_tweets_holi)
 
 
-
 df_work = pd.DataFrame(
     data=np.stack([list_tweets_work, list_mobile_work]).T,
     columns=["Tweets_num", "Population"],
@@ -221,14 +224,16 @@ y = list_tweets_holi.reshape(-1, 1)
 mi_holi = mutual_info_regression(X, y)
 
 
-#Fri
-for i in range(0, max(df_work['Tweets_num'])):
-    if not max(df_work['Tweets_num']==i):
-        df_work = pd.concat([df_work, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+# Fri
+for i in range(0, max(df_work["Tweets_num"])):
+    if not max(df_work["Tweets_num"] == i):
+        df_work = pd.concat(
+            [df_work, pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"])]
+        )
 sns.scatterplot(x="Tweets_num", y="Population", data=df_work, ax=ax1_1)
 
-if max(df_work['Tweets_num']) >40:
-    ax1_1.set_xticklabels(ax1_1.get_xticklabels(),rotation = 90)
+if max(df_work["Tweets_num"]) > 40:
+    ax1_1.set_xticklabels(ax1_1.get_xticklabels(), rotation=90)
 # x_axis = []
 # for i in range(0, max(df_work["Tweets_num"]) + 1):
 #     x_axis.append(i)
@@ -239,14 +244,13 @@ if max(df_work['Tweets_num']) >40:
 # )
 # sns.regplot(x="Tweets_num", y="Population", data=df2glaph, ax=ax1_1)
 
-#Sat
-for i in range(0, max(df_holi['Tweets_num'])):
-    if not max(df_holi['Tweets_num']==i):
-        df_holi = pd.concat([df_holi, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+# Sat
+for i in range(0, max(df_holi["Tweets_num"])):
+    if not max(df_holi["Tweets_num"] == i):
+        df_holi = pd.concat(
+            [df_holi, pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"])]
+        )
 sns.scatterplot(x="Tweets_num", y="Population", data=df_holi, ax=ax1_2)
-
-
-
 
 
 ax1_1.set_title("Workday MI={:.2f}".format(mi_work[0]), fontsize=16)

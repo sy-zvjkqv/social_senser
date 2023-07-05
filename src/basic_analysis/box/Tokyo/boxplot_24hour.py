@@ -150,9 +150,13 @@ for month in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
             x_label.append(key)
 
 
-mobile = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy')
-tweets = np.load('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy')
-name_key = 'Tokyostation'
+mobile = np.load(
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy"
+)
+tweets = np.load(
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy"
+)
+name_key = "Tokyostation"
 
 mobile_0to3 = mobile[:, 0:3]
 mobile_4to6 = mobile[:, 4:6]
@@ -279,48 +283,78 @@ y = tweets_22to24_flatten.reshape(-1, 1)
 mi_22to24 = mutual_info_regression(X, y)
 
 plt.figure(figsize=(15, 10))
-for i in range(0, max(df_0to3['Tweets_num'])):
-    if not max(df_0to3['Tweets_num']==i):
-        df_0to3 = pd.concat([df_0to3, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_0to3["Tweets_num"])):
+    if not max(df_0to3["Tweets_num"] == i):
+        df_0to3 = pd.concat(
+            [df_0to3, pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"])]
+        )
 sns.boxplot(x="Tweets_num", y="Population", data=df_0to3, ax=ax1_1, whis=100)
 
 
-for i in range(0, max(df_4to6['Tweets_num'])):
-    if not max(df_4to6['Tweets_num']==i):
-        df_4to6 = pd.concat([df_4to6, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_4to6["Tweets_num"])):
+    if not max(df_4to6["Tweets_num"] == i):
+        df_4to6 = pd.concat(
+            [df_4to6, pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"])]
+        )
 
 sns.boxplot(x="Tweets_num", y="Population", data=df_4to6, ax=ax1_2, whis=100)
 
-for i in range(0, max(df_7to9['Tweets_num'])):
-    if not max(df_7to9['Tweets_num']==i):
-        df_7to9 = pd.concat([df_7to9, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_7to9["Tweets_num"])):
+    if not max(df_7to9["Tweets_num"] == i):
+        df_7to9 = pd.concat(
+            [df_7to9, pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"])]
+        )
 sns.boxplot(x="Tweets_num", y="Population", data=df_7to9, ax=ax2_1, whis=100)
 
-for i in range(0, max(df_10to12['Tweets_num'])):
-    if not max(df_10to12['Tweets_num']==i):
-        df_10to12 = pd.concat([df_10to12, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_10to12["Tweets_num"])):
+    if not max(df_10to12["Tweets_num"] == i):
+        df_10to12 = pd.concat(
+            [
+                df_10to12,
+                pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+            ]
+        )
 sns.boxplot(x="Tweets_num", y="Population", data=df_10to12, ax=ax2_2, whis=100)
 
-for i in range(0, max(df_13to15['Tweets_num'])):
-    if not max(df_13to15['Tweets_num']==i):
-        df_13to15 = pd.concat([df_13to15, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_13to15["Tweets_num"])):
+    if not max(df_13to15["Tweets_num"] == i):
+        df_13to15 = pd.concat(
+            [
+                df_13to15,
+                pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+            ]
+        )
 sns.boxplot(x="Tweets_num", y="Population", data=df_13to15, ax=ax3_1, whis=100)
 
-for i in range(0, max(df_16to18['Tweets_num'])):
-    if not max(df_16to18['Tweets_num']==i):
-        df_16to18 = pd.concat([df_16to18, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_16to18["Tweets_num"])):
+    if not max(df_16to18["Tweets_num"] == i):
+        df_16to18 = pd.concat(
+            [
+                df_16to18,
+                pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+            ]
+        )
 sns.boxplot(x="Tweets_num", y="Population", data=df_16to18, ax=ax3_2, whis=100)
 
-for i in range(0, max(df_19to21['Tweets_num'])):
-    if not max(df_19to21['Tweets_num']==i):
-        df_19to21 = pd.concat([df_19to21, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_19to21["Tweets_num"])):
+    if not max(df_19to21["Tweets_num"] == i):
+        df_19to21 = pd.concat(
+            [
+                df_19to21,
+                pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+            ]
+        )
 sns.boxplot(x="Tweets_num", y="Population", data=df_19to21, ax=ax4_1, whis=100)
 
-for i in range(0, max(df_22to24['Tweets_num'])):
-    if not max(df_22to24['Tweets_num']==i):
-        df_22to24 = pd.concat([df_22to24, pd.DataFrame([[i,np.nan]],columns=['Tweets_num', 'Population'])])
+for i in range(0, max(df_22to24["Tweets_num"])):
+    if not max(df_22to24["Tweets_num"] == i):
+        df_22to24 = pd.concat(
+            [
+                df_22to24,
+                pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+            ]
+        )
 sns.boxplot(x="Tweets_num", y="Population", data=df_22to24, ax=ax4_2, whis=100)
-
 
 
 ax1_1.set_title("0to3 MI={:.2f}".format(mi_0to3[0]), fontsize=16)
@@ -332,14 +366,14 @@ ax3_2.set_title("16to18 MI={:.2f}".format(mi_16to18[0]), fontsize=16)
 ax4_1.set_title("19to21 MI={:.2f}".format(mi_19to21[0]), fontsize=16)
 ax4_2.set_title("222to24 MI={:.2f}".format(mi_22to24[0]), fontsize=16)
 
-ax1_1.set_xticklabels(ax1_1.get_xticklabels(),rotation = 90)
-ax1_2.set_xticklabels(ax1_2.get_xticklabels(),rotation = 90)
-ax2_1.set_xticklabels(ax2_1.get_xticklabels(),rotation = 90)
-ax2_2.set_xticklabels(ax2_2.get_xticklabels(),rotation = 90)
-ax3_1.set_xticklabels(ax3_1.get_xticklabels(),rotation = 90)
-ax3_2.set_xticklabels(ax3_2.get_xticklabels(),rotation = 90)
-ax4_1.set_xticklabels(ax4_1.get_xticklabels(),rotation = 90)
-ax4_2.set_xticklabels(ax4_2.get_xticklabels(),rotation = 90)
+ax1_1.set_xticklabels(ax1_1.get_xticklabels(), rotation=90)
+ax1_2.set_xticklabels(ax1_2.get_xticklabels(), rotation=90)
+ax2_1.set_xticklabels(ax2_1.get_xticklabels(), rotation=90)
+ax2_2.set_xticklabels(ax2_2.get_xticklabels(), rotation=90)
+ax3_1.set_xticklabels(ax3_1.get_xticklabels(), rotation=90)
+ax3_2.set_xticklabels(ax3_2.get_xticklabels(), rotation=90)
+ax4_1.set_xticklabels(ax4_1.get_xticklabels(), rotation=90)
+ax4_2.set_xticklabels(ax4_2.get_xticklabels(), rotation=90)
 
 save_PATH = (
     "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/24hour/"

@@ -2,33 +2,59 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-Kyoto_station_mobile_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kyotostation.npy'
-Kyoto_users_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kyotostation_users.npy'
+Kyoto_station_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kyotostation.npy"
+Kyoto_users_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kyotostation_users.npy"
 
-Arashi_mobile_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Arashiyama_3zi_2022.npy'
-Arashi_users_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Arashiyama_users.npy'
+Arashi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Arashiyama_3zi_2022.npy"
+Arashi_users_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Arashiyama_users.npy"
 
-High_mobile_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Highclass_3zi_2022.npy'
-High_users_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Highclass_users.npy'
+High_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Highclass_3zi_2022.npy"
+High_users_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Highclass_users.npy"
 
-Kinkaku_mobile_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kinkaku_3zi_2022.npy'
-Kinkaku_users_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kinkaku_users.npy'
+Kinkaku_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kinkaku_3zi_2022.npy"
+Kinkaku_users_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kinkaku_users.npy"
 
-Kiyomizu_mobile_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kiyomizu_3zi_2022.npy'
-Kiyomizu_users_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kiyomizu_users.npy'
+Kiyomizu_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kiyomizu_3zi_2022.npy"
+Kiyomizu_users_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kiyomizu_users.npy"
 
-Lowclass_mobile_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Lowclass_3zi_2022.npy'
-Lowclass_users_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Lowclass_users.npy'
+Lowclass_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Lowclass_3zi_2022.npy"
+Lowclass_users_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Lowclass_users.npy"
 
-Nizyou_mobile_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Nizyou_3zi_2022.npy'
-Nizyou_users_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Nizyou_users.npy'
+Nizyou_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Nizyou_3zi_2022.npy"
+Nizyou_users_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Nizyou_users.npy"
 
-Touzi_mobile_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Touzi_3zi_2022.npy'
-Touzi_users_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Touzi_users.npy'
+Touzi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Touzi_3zi_2022.npy"
+Touzi_users_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Touzi_users.npy"
 
-list_mobile = [Arashi_mobile_PATH, High_mobile_PATH, Kinkaku_mobile_PATH, Kiyomizu_mobile_PATH, Lowclass_mobile_PATH, Nizyou_mobile_PATH, Touzi_mobile_PATH]
-list_users = [Arashi_users_PATH, High_users_PATH, Kinkaku_users_PATH, Kiyomizu_users_PATH, Lowclass_users_PATH, Nizyou_users_PATH, Touzi_users_PATH, Kyoto_users_PATH]
-list_key = ['Arashiyama','High_class','Kinkaku_tmple','Kiyomizu_temple','middle_class','Nizyou','Touzi','Kyotostation']
+list_mobile = [
+    Arashi_mobile_PATH,
+    High_mobile_PATH,
+    Kinkaku_mobile_PATH,
+    Kiyomizu_mobile_PATH,
+    Lowclass_mobile_PATH,
+    Nizyou_mobile_PATH,
+    Touzi_mobile_PATH,
+]
+list_users = [
+    Arashi_users_PATH,
+    High_users_PATH,
+    Kinkaku_users_PATH,
+    Kiyomizu_users_PATH,
+    Lowclass_users_PATH,
+    Nizyou_users_PATH,
+    Touzi_users_PATH,
+    Kyoto_users_PATH,
+]
+list_key = [
+    "Arashiyama",
+    "High_class",
+    "Kinkaku_tmple",
+    "Kiyomizu_temple",
+    "middle_class",
+    "Nizyou",
+    "Touzi",
+    "Kyotostation",
+]
 
 for i in range(0, len(list_mobile)):
     mobile = np.load(list_mobile[i])
@@ -177,7 +203,6 @@ for i in range(0, len(list_mobile)):
     ax3_1.set_xlabel("day of week")
     ax3_2.set_xlabel("day of week")
     ax3_3.set_xlabel("day of week")
-
 
     ax1_1.plot(mobile_perday)
     ax1_2.plot(twitter_perday)

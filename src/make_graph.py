@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 key = "Tokyo_station"
-mobile_npy_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy'
-twitter_npy_PATH = '/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy'
+mobile_npy_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy"
+twitter_npy_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy"
 
 
 mobile = np.load(mobile_npy_PATH)
