@@ -1,6 +1,3 @@
-import datetime
-
-import jpholiday
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
@@ -135,7 +132,6 @@ hour_list = [
     "23",
 ]
 x_label = []
-work_holi_Flag = []
 for month in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]:
     if month in ["01", "03", "05", "07", "08", "10", "12"]:
         day_list = day_list_long
@@ -149,9 +145,6 @@ for month in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
             key = int("21" + month + day + hour)
             key = str(key)
             x_label.append(key)
-        Flag = int("2021" + month + day)
-        Flag = str(Flag)
-        work_holi_Flag.append(Flag)
 
 
 mobile = np.load(
@@ -161,75 +154,57 @@ tweets = np.load(
     "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy"
 )
 name_key = "Tokyostation"
+mobile_flatten = mobile.flatten()
+tweets_flatten = tweets.flatten()
 
-mobile = np.sum(mobile, axis=1)
-tweets = np.sum(tweets, axis=1)
+tmp = np.stack([tweets_flatten, mobile_flatten])
+df_mobile_tweets = pd.DataFrame(data=tmp.T, columns=["Tweets_num", "Population"])
+for i in range(0, max(df_mobile_tweets["Tweets_num"])):
+    if not max(df_mobile_tweets["Tweets_num"] == i):
+        df_mobile_tweets = pd.concat(
+            [
+                df_mobile_tweets,
+                pd.DataFrame([[i, np.nan]], columns=["Tweets_num", "Population"]),
+            ]
+        )
 
 
-# DATE = yyyymmdd#
-def isBizDay(DATE):
-    Date = datetime.date(int(DATE[0:4]), int(DATE[4:6]), int(DATE[6:8]))
-    if Date.weekday() >= 5 or jpholiday.is_holiday(Date):
-        return "Holiday"
-    else:
-        return "Workday"
+# x_axis = []
+# for i in range(0, int(max(df_mobile_tweets["Tweets_num"])) + 1):
+#     x_axis.append(i)
 
+# a, b = np.polyfit(tweets_flatten, mobile_flatten, 1)
+# y2 = a * np.array(x_axis) + b
+# df2glaph = pd.DataFrame(
+#     np.stack((x_axis, y2)).T, columns=["Tweets_num", "Population"]
+# )
 
-list_Week_of_Day = []
-for i in work_holi_Flag:
-    if (
-        i == "20210101"
-        or i == "20210102"
-        or i == "20210103"
-        or i == "20211229"
-        or i == "20211230"
-        or i == "20211231"
-    ):
-        list_Week_of_Day.append("Holiday")
-    else:
-        list_Week_of_Day.append(isBizDay(i))
+# X = mobile_flatten.reshape(-1, 1)
+# y = tweets_flatten.reshape(-1, 1)
+# a, b = np.polyfit(X[:, 0], y, 1)
+# mi = mutual_info_regression(X, y)
+# f_test, _ = f_regression(X, y)
+# フィッティング直線
 
-df = pd.DataFrame(
-    data=np.stack([mobile, tweets, list_Week_of_Day]).T,
-    columns=["Population", "Tweets_num", "Week_of_Day"],
+X = mobile_flatten
+y = tweets_flatten
+correlation, p_value = stats.pearsonr(X, y)
+
+plt.figure(figsize=(15, 10))
+sns.boxplot(x="Tweets_num", y="Population", data=df_mobile_tweets, whis=100)
+sns.regplot(
+    x="Tweets_num", y="Population", data=df_mobile_tweets, scatter=False, ci=None
 )
-df["Tweets_num"] = df["Tweets_num"].astype(float)
-df["Population"] = df["Population"].astype(float)
-
-
-fig = plt.figure(figsize=(20, 25))
-
-
-fig = sns.lmplot(
-    x="Tweets_num",
-    y="Population",
-    hue="Week_of_Day",
-    data=df,
-    ci=None,
-    palette=dict(Workday="g", Holiday="m"),
-)
-
-df_work = df[df["Week_of_Day"] == "Workday"]
-df_holi = df[df["Week_of_Day"] == "Holiday"]
-
-X = df_work["Population"].to_numpy()
-y = df_work["Tweets_num"].to_numpy()
-correlation_work, p_value_work = stats.pearsonr(X, y)
-
-X = df_holi["Population"].to_numpy()
-y = df_holi["Tweets_num"].to_numpy()
-correlation_holi, p_value_holi = stats.pearsonr(X, y)
-
-fig.set(
-    title="{} \n r_work={:.2f} r_holi={:.2f}\n p_work={:.2e} p_holi={:.2e}".format(
-        name_key, correlation_work, correlation_holi, p_value_work, p_value_holi
-    )
-)
-
+# sns.regplot(x="Tweets_num", y="Population", data=df2glaph)
+# plt.xticks(x_axis, x_axis)
+plt.xlabel("Number of Twitter Users per 1hour")
+plt.ylabel("Populations per 1hour")
+plt.title("{}  r={:.2f} p={:.2e}".format(name_key, correlation, p_value), fontsize=16)
+plt.xticks(rotation=90)
 
 save_PATH = (
-    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/perDay/regression/work_holi/"
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/regression/perhour/"
     + name_key
     + ".png"
 )
-fig.savefig(save_PATH)
+plt.savefig(save_PATH)

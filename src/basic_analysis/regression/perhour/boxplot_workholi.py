@@ -162,9 +162,8 @@ tweets = np.load(
 )
 name_key = "Tokyostation"
 
-mobile = np.sum(mobile, axis=1)
-tweets = np.sum(tweets, axis=1)
-
+mobile = mobile.flatten()
+tweets = tweets.flatten()
 
 # DATE = yyyymmdd#
 def isBizDay(DATE):
@@ -185,9 +184,11 @@ for i in work_holi_Flag:
         or i == "20211230"
         or i == "20211231"
     ):
-        list_Week_of_Day.append("Holiday")
+        for j in range(0,24):
+            list_Week_of_Day.append("Holiday")
     else:
-        list_Week_of_Day.append(isBizDay(i))
+        for j in range(0,24):
+            list_Week_of_Day.append(isBizDay(i))
 
 df = pd.DataFrame(
     data=np.stack([mobile, tweets, list_Week_of_Day]).T,
@@ -206,6 +207,7 @@ fig = sns.lmplot(
     hue="Week_of_Day",
     data=df,
     ci=None,
+    x_estimator=np.mean,
     palette=dict(Workday="g", Holiday="m"),
 )
 
@@ -228,7 +230,7 @@ fig.set(
 
 
 save_PATH = (
-    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/perDay/regression/work_holi/"
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/regression/perhour/work_holi/"
     + name_key
     + ".png"
 )
