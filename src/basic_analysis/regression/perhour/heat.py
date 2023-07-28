@@ -167,7 +167,7 @@ def standardization(x, axis=None, ddof=0):
 
 mobile_flatten = standardization(mobile_flatten)
 tweets_flatten = standardization(tweets_flatten)
-print(tweets_flatten)
+
 tmp = np.stack([tweets_flatten, mobile_flatten])
 df_mobile_tweets = pd.DataFrame(data=tmp.T, columns=["Tweets_num", "Population"])
 # for i in range(0, max(df_mobile_tweets["Tweets_num"])):
@@ -207,13 +207,15 @@ plt.figure(figsize=(15, 10))
 #sns.jointplot(x=x, y=y, kind="hist", color="#D91887")
 
 
-sns.histplot(x="Population", y="Tweets_num", data=df_mobile_tweets,bins=10)
+#sns.histplot(x="Population", y="Tweets_num", data=df_mobile_tweets, stat='count',bins=10, cbar=True)
+
+sns.scatterplot(x="Population", y="Tweets_num",data=df_mobile_tweets, alpha=0.1)
 sns.regplot(x="Population", y="Tweets_num",data=df_mobile_tweets, scatter=False, ci=None)
 
 # sns.regplot(x="Tweets_num", y="Population", data=df2glaph)
 # plt.xticks(x_axis, x_axis)
-plt.xlabel("Number of Twitter Users per 1hour")
-plt.ylabel("Populations per 1hour")
+plt.ylabel("Number of Twitter Users per 1hour")
+plt.xlabel("Populations per 1hour")
 plt.title("{}  r={:.2f} p={:.2e}".format(name_key, correlation, p_value), fontsize=16)
 plt.xticks(rotation=90)
 

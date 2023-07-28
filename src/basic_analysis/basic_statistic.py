@@ -82,11 +82,28 @@ for i in range(0, len(list_mobile)):
 
     tmp = ([correlation, p_value,
             int(np.mean(mobile)),int(np.median(mobile)),int(np.sum(mobile)),int(np.var(mobile,ddof=1)),int(np.std(mobile,ddof=1)),int(np.max(mobile)),int(np.min(mobile)),int(np.percentile(mobile, 25)),int(np.percentile(mobile, 75)),
-            int(np.mean(tweets)),int(np.median(tweets)),int(np.sum(tweets)),int(np.var(tweets,ddof=1)),int(np.std(tweets,ddof=1)),int(np.max(tweets)),int(np.min(tweets)),int(np.percentile(tweets, 25)),int(np.percentile(tweets, 75))])
+            int(np.mean(tweets)),int(np.median(tweets)),int(np.sum(tweets)),int(np.var(tweets,ddof=1)),int(np.std(tweets,ddof=1)),int(np.max(tweets)),int(np.min(tweets)),int(np.percentile(tweets, 25)),int(np.percentile(tweets, 75)),
+            float(np.median(tweets)/np.median(mobile))])
     data.append(tmp)
 columns=['相関係数','p値',
          '人口平均','人口中央値','人口合計','人口分散','人口標準偏差','人口最大値','人口最小値','人口四分位点(25%)','人口四分位点(75%)',
-         '発言者数平均','発言者数中央値','発言者数合計','発言者数分散','発言者数標準偏差','発言者数最大値','発言者数最小値','発言者数四分位点(25%)','発言者数四分位点(75%)']
+         '発言者数平均','発言者数中央値','発言者数合計','発言者数分散','発言者数標準偏差','発言者数最大値','発言者数最小値','発言者数四分位点(25%)','発言者数四分位点(75%)','発言者数中央値/人口中央値']
 
 df= pd.DataFrame(data,index=list_key,columns=columns)
-df.to_csv('tmp.csv')
+df.to_csv('基本統計量.csv')
+
+
+rank_r = []
+for i in columns:
+    corr, pvalue = stats.spearmanr(df.rank()['相関係数'], df.rank()[i])
+    rank_r.append([corr, pvalue])
+
+df_rank = pd.DataFrame(rank_r,index=columns, columns=['順位相関係数','p値'])
+df_rank.to_csv('順位相関.csv')
+
+r_r = []
+for i in columns:
+    corr, pvalue = stats.pearsonr(df['相関係数'], df[i])
+    r_r.append([corr, pvalue])
+df_r = pd.DataFrame(r_r,index=columns, columns=['順位相関係数','p値'])
+df_r.to_csv('相関.csv')
