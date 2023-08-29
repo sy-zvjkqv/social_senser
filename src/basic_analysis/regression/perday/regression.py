@@ -207,9 +207,8 @@ correlation, p_value = stats.pearsonr(X, y)
 # res = float(res.iloc[1,0])
 fig.set(title="{}  r={:.2f} p={:.2e}".format(name_key, correlation, p_value))
 
-
 save_PATH = (
-    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/perDay/regression/"
+    "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/regression/perday/"
     + name_key
     + ".png"
 )

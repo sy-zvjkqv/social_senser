@@ -273,9 +273,11 @@ for i in range(0, len(list_mobile)):
             name_key, correlation_work, correlation_holi, p_value_work, p_value_holi
         )
     )
-
+    print(" {}, {}, {}, {}, {},".format(
+        name_key, correlation_work, p_value_work, correlation_holi, p_value_holi
+    ))
     save_PATH = (
-        "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/box/perDay/regression/work_holi/"
+        "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/regression/perday/work_holi/"
         + name_key
         + ".png"
     )
