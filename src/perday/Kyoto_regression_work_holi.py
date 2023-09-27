@@ -153,56 +153,56 @@ for month in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
         Flag = str(Flag)
         work_holi_Flag.append(Flag)
 
-Kyoto_station_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kyotostation.npy"
-Kyoto_station_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kyotostation_users.npy"
+Kyoto_station_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Kyotostation.npy"
+Kyoto_station_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Kyotostation.npy"
 
-Arashi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Arashiyama_3zi_2022.npy"
-Arashi_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Arashiyama_users.npy"
+Arashi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Arashiyama.npy"
+Arashi_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Arashiyama.npy"
 
-High_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Highclass_3zi_2022.npy"
-High_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Highclass_users.npy"
+Karasuma_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Karasuma.npy"
+Karasuma_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Karasuma.npy"
 
-Kinkaku_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kinkaku_3zi_2022.npy"
-Kinkaku_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kinkaku_users.npy"
+Kinkaku_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Kinkaku.npy"
+Kinkaku_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Kinkaku.npy"
 
-Kiyomizu_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kiyomizu_3zi_2022.npy"
-Kiyomizu_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kiyomizu_users.npy"
+Kiyomizu_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Kiyomizu.npy"
+Kiyomizu_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Kiyomizu.npy"
 
-Lowclass_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Lowclass_3zi_2022.npy"
-Lowclass_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Lowclass_users.npy"
+University_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/University.npy"
+University_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/University.npy"
 
-Nizyou_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Nizyou_3zi_2022.npy"
-Nizyou_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Nizyou_users.npy"
+Nizyou_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Nizyou.npy"
+Nizyou_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Nizyou.npy"
 
-Touzi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Touzi_3zi_2022.npy"
-Touzi_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Touzi_users.npy"
+Touzi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Touzi.npy"
+Touzi_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Touzi.npy"
 
 list_mobile = [
     Arashi_mobile_PATH,
-    High_mobile_PATH,
+    Karasuma_mobile_PATH,
     Kinkaku_mobile_PATH,
     Kiyomizu_mobile_PATH,
-    Lowclass_mobile_PATH,
+    University_mobile_PATH,
     Nizyou_mobile_PATH,
     Touzi_mobile_PATH,
     Kyoto_station_mobile_PATH,
 ]
 list_twitter = [
     Arashi_tweets_PATH,
-    High_tweets_PATH,
+    Karasuma_tweets_PATH,
     Kinkaku_tweets_PATH,
     Kiyomizu_tweets_PATH,
-    Lowclass_tweets_PATH,
+    University_tweets_PATH,
     Nizyou_tweets_PATH,
     Touzi_tweets_PATH,
     Kyoto_station_tweets_PATH,
 ]
 list_key = [
     "Arashiyama",
-    "High_class",
+    "Karasuma",
     "Kinkaku_tmple",
     "Kiyomizu_temple",
-    "middle_class",
+    "Kyoto University",
     "Nizyou",
     "Touzi",
     "Kyotostation",
@@ -277,7 +277,7 @@ for i in range(0, len(list_mobile)):
         name_key, correlation_work, p_value_work, correlation_holi, p_value_holi
     ))
     save_PATH = (
-        "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/regression/perday/work_holi/"
+        "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/perday/work_holi/"
         + name_key
         + ".png"
     )
