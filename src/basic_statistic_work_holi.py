@@ -11,65 +11,66 @@ from sklearn.linear_model import LinearRegression
 from datetime import datetime
 from datetime import timedelta
 import jpholiday
-Tokyo_station_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Tokyostation/Tokyostation_2021.npy"
-Tokyo_station_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Tokyostation_2021/outlier/Tokyostation_3zi_2021.npy"
 
-Kyoto_station_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kyotostation.npy"
-Kyoto_station_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kyotostation_users.npy"
+Tokyo_station_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Tokyostation.npy"
+Tokyo_station_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Tokyostaion.npy"
 
-Arashi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Arashiyama_3zi_2022.npy"
-Arashi_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Arashiyama_users.npy"
+Kyoto_station_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Kyotostation.npy"
+Kyoto_station_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Kyotostation.npy"
 
-High_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Highclass_3zi_2022.npy"
-High_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Highclass_users.npy"
+Arashi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Arashiyama.npy"
+Arashi_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Arashiyama.npy"
 
-Kinkaku_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kinkaku_3zi_2022.npy"
-Kinkaku_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kinkaku_users.npy"
+Karasuma_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Karasuma.npy"
+Karasuma_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Karasuma.npy"
 
-Kiyomizu_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Kiyomizu_3zi_2022.npy"
-Kiyomizu_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Kiyomizu_users.npy"
+Kinkaku_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Kinkaku.npy"
+Kinkaku_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Kinkaku.npy"
 
-Lowclass_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Lowclass_3zi_2022.npy"
-Lowclass_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Lowclass_users.npy"
+Kiyomizu_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Kiyomizu.npy"
+Kiyomizu_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Kiyomizu.npy"
 
-Nizyou_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Nizyou_3zi_2022.npy"
-Nizyou_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Nizyou_users.npy"
+University_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/University.npy"
+University_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/University.npy"
 
-Touzi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/Kyoto/Touzi_3zi_2022.npy"
-Touzi_tweets_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/Kyoto/users/Touzi_users.npy"
+Nizyou_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Nizyou.npy"
+Nizyou_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Nizyou.npy"
+
+Touzi_mobile_PATH = "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/mobile/numpy_array/Touzi.npy"
+Touzi_tweets_PATH = "//home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/twitter/numpy_array/Touzi.npy"
 
 list_mobile = [
     Tokyo_station_mobile_PATH,
     Arashi_mobile_PATH,
-    High_mobile_PATH,
+    Karasuma_mobile_PATH,
     Kinkaku_mobile_PATH,
     Kiyomizu_mobile_PATH,
-    Lowclass_mobile_PATH,
+    University_mobile_PATH,
     Nizyou_mobile_PATH,
     Touzi_mobile_PATH,
     Kyoto_station_mobile_PATH,
 ]
 list_twitter = [
-    Tokyo_station_tweets_PATH,
+    Tokyo_station_mobile_PATH,
     Arashi_tweets_PATH,
-    High_tweets_PATH,
+    Karasuma_tweets_PATH,
     Kinkaku_tweets_PATH,
     Kiyomizu_tweets_PATH,
-    Lowclass_tweets_PATH,
+    University_tweets_PATH,
     Nizyou_tweets_PATH,
     Touzi_tweets_PATH,
     Kyoto_station_tweets_PATH,
 ]
 list_key = [
-    "東京駅",
-    "嵐山",
-    "中京区",
-    "金閣寺",
-    "清水寺",
-    "学生街",
-    "二条城",
-    "東寺",
-    "京都駅",
+    "Tokyo station",
+    "Arashiyama",
+    "Karasuma",
+    "Kinkaku_tmple",
+    "Kiyomizu_temple",
+    "Kyoto University",
+    "Nizyou",
+    "Touzi",
+    "Kyoto station",
 ]
 
 def isBizDay(DATE):
@@ -194,11 +195,24 @@ columns_holi=['ソーシャルセンサ性能(休日)','p値(休日)',
          '発言者数平均(休日)','発言者数中央値(休日)','発言者数合計(休日)','発言者数分散(休日)','発言者数最大値(休日)','発言者数最小値(休日)','発言者数中央値/人口中央値(休日)']
 
 df_work= pd.DataFrame(data_work,index=list_key,columns=columns_work)
-df_work.to_csv('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/consideration/基本統計量_work.csv')
+df_work.to_csv('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/統計/ソーシャルセンサ性能平日.csv')
 
 df_holi= pd.DataFrame(data_holi,index=list_key,columns=columns_holi)
-df_holi.to_csv('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/data/consideration/基本統計量_holi.csv')
+df_holi.to_csv('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/統計/ソーシャルセンサ性能休日.csv')
 
+# r_r = []
+# for i in columns_work:
+#     corr, pvalue = stats.pearsonr(df_work['ソーシャルセンサ性能(平日)'], df_work[i])
+#     r_r.append([corr, pvalue])
+# df_r = pd.DataFrame(r_r,index=columns_work, columns=['相関係数','p値'])
+# df_r.to_csv('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/統計/ソーシャルセンサ性能との相関平日.csv')
+# r_r = []
+
+# for i in columns_holi:
+#     corr, pvalue = stats.pearsonr(df_holi['ソーシャルセンサ性能(休日)'], df_holi[i])
+#     r_r.append([corr, pvalue])
+# df_r = pd.DataFrame(r_r,index=columns_holi, columns=['相関係数','p値'])
+# df_r.to_csv('/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/統計/ソーシャルセンサ性能との相関休日.csv')
 
 # r_r = []
 # for i in columns:
