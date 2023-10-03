@@ -50,7 +50,7 @@ list_mobile = [
     Kyoto_station_mobile_PATH,
 ]
 list_twitter = [
-    Tokyo_station_mobile_PATH,
+    Tokyo_station_tweets_PATH,
     Arashi_tweets_PATH,
     Karasuma_tweets_PATH,
     Kinkaku_tweets_PATH,
@@ -64,7 +64,7 @@ list_key = [
     "Tokyo station",
     "Arashiyama",
     "Karasuma",
-    "Kinkaku_tmple",
+    "Kinkaku_temple",
     "Kiyomizu_temple",
     "Kyoto University",
     "Nizyou",
@@ -80,11 +80,11 @@ for i in range(0, len(list_mobile)):
     tweets = np.sum(tweets, axis=1)
     correlation, p_value = stats.pearsonr(mobile, tweets)
 
-
     tmp = ([correlation, p_value,
             int(np.mean(mobile)),int(np.median(mobile)),int(np.sum(mobile)),int(np.var(mobile,ddof=1)),int(np.std(mobile,ddof=1)),int(np.max(mobile)),int(np.min(mobile)),int(np.percentile(mobile, 25)),int(np.percentile(mobile, 75)),
             int(np.mean(tweets)),int(np.median(tweets)),int(np.sum(tweets)),int(np.var(tweets,ddof=1)),int(np.std(tweets,ddof=1)),int(np.max(tweets)),int(np.min(tweets)),int(np.percentile(tweets, 25)),int(np.percentile(tweets, 75)),
             float(np.median(tweets)/np.median(mobile))])
+
     data.append(tmp)
 columns=['ソーシャルセンサ性能','p値',
          '人口平均','人口中央値','人口合計','人口分散','人口標準偏差','人口最大値','人口最小値','人口四分位点(25%)','人口四分位点(75%)',

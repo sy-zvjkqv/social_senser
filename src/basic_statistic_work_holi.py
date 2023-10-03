@@ -51,7 +51,7 @@ list_mobile = [
     Kyoto_station_mobile_PATH,
 ]
 list_twitter = [
-    Tokyo_station_mobile_PATH,
+    Tokyo_station_tweets_PATH,
     Arashi_tweets_PATH,
     Karasuma_tweets_PATH,
     Kinkaku_tweets_PATH,
@@ -65,7 +65,7 @@ list_key = [
     "Tokyo station",
     "Arashiyama",
     "Karasuma",
-    "Kinkaku_tmple",
+    "Kinkaku_temple",
     "Kiyomizu_temple",
     "Kyoto University",
     "Nizyou",
