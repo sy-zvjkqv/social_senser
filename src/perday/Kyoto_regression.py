@@ -242,7 +242,7 @@ for i in range(0, len(list_mobile)):
     # print(p_value)
     # res = df[["Tweets_num","Population"]].corr()
     # res = float(res.iloc[1,0])
-    fig.set(title="{}  r={:.2f} p={:.2e}".format(name_key, correlation, p_value))
+    fig.set(title="r={:.2f} p={:.2e}".format(correlation, p_value))
 
     save_PATH = (
         "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/perday/"

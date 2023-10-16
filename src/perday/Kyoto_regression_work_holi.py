@@ -269,8 +269,8 @@ for i in range(0, len(list_mobile)):
     correlation_holi, p_value_holi = stats.pearsonr(X, y)
 
     fig.set(
-        title="{} \n r_work={:.2f} r_holi={:.2f}\n p_work={:.2e} p_holi={:.2e}".format(
-            name_key, correlation_work, correlation_holi, p_value_work, p_value_holi
+        title="r_work={:.2f} r_holi={:.2f}\n p_work={:.2e} p_holi={:.2e}".format(
+            correlation_work, correlation_holi, p_value_work, p_value_holi
         )
     )
     print(" {}, {}, {}, {}, {},".format(
