@@ -179,33 +179,29 @@ for i in range(0, 365):
 
 df = pd.DataFrame(
     data=np.stack([mobile, tweets, list_Week_of_Day]).T,
-    columns=["Population", "Tweets_num", "Week_of_Day"],
+    columns=["The number of people", "The number of Tweets", "Week_of_Day"],
 )
-df["Tweets_num"] = df["Tweets_num"].astype(float)
-df["Population"] = df["Population"].astype(float)
+df["The number of Tweets"] = df["The number of Tweets"].astype(float)
+df["The number of people"] = df["The number of people"].astype(float)
 
 
 fig = plt.figure(figsize=(20, 25))
 # fig.suptitle(name_key, fontsize=16)
 
 
-fig = sns.lmplot(x="Tweets_num", y="Population", data=df, ci=None)
 
-
-# X = mobile.reshape(-1, 1)
-# y = tweets.reshape(-1, 1)
-# #a, b = np.polyfit(X[:, 0], y, 1)
-# X = X.astype(int)
-# y = y.astype(int)
-# mi = mutual_info_regression(X, y)
 X = mobile
 y = tweets
+fig = sns.lmplot(x="The number of Tweets", y="The number of people", data=df, ci=None, legend=True)
 correlation, p_value = stats.pearsonr(X, y)
-# print(correlation)
-# print(p_value)
-# res = df[["Tweets_num","Population"]].corr()
-# res = float(res.iloc[1,0])
-fig.set(title=" r={:.2f} p={:.2e}".format(correlation, p_value))
+
+
+# テキストを図の上に追加
+ax = plt.gca()
+ax.text(0.65, 0.9, 'social sensor performance \n: {:.2f}'.format(correlation), transform=ax.transAxes,
+        fontsize=9, verticalalignment='top')
+plt.show()
+
 
 save_PATH = (
     "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/perday/"

@@ -241,41 +241,46 @@ for i in range(0, len(list_mobile)):
 
     df = pd.DataFrame(
         data=np.stack([mobile, tweets, list_Week_of_Day]).T,
-        columns=["Population", "Tweets_num", "Week_of_Day"],
+        columns=["The number of people", "The number of Tweets", "Week_of_Day"],
     )
-    df["Tweets_num"] = df["Tweets_num"].astype(float)
-    df["Population"] = df["Population"].astype(float)
+    df["The number of Tweets"] = df["The number of Tweets"].astype(float)
+    df["The number of people"] = df["The number of people"].astype(float)
 
     fig = plt.figure(figsize=(20, 25))
 
     fig = sns.lmplot(
-        x="Tweets_num",
-        y="Population",
+        x="The number of Tweets",
+        y="The number of people",
         hue="Week_of_Day",
         data=df,
         ci=None,
         palette=dict(Workday="g", Holiday="m"),
-    )
+        legend=True)
 
     df_work = df[df["Week_of_Day"] == "Workday"]
     df_holi = df[df["Week_of_Day"] == "Holiday"]
 
-    X = df_work["Population"].to_numpy()
-    y = df_work["Tweets_num"].to_numpy()
+    X = df_work["The number of people"].to_numpy()
+    y = df_work["The number of Tweets"].to_numpy()
     correlation_work, p_value_work = stats.pearsonr(X, y)
 
-    X = df_holi["Population"].to_numpy()
-    y = df_holi["Tweets_num"].to_numpy()
+    X = df_holi["The number of people"].to_numpy()
+    y = df_holi["The number of Tweets"].to_numpy()
     correlation_holi, p_value_holi = stats.pearsonr(X, y)
 
-    fig.set(
-        title="r_work={:.2f} r_holi={:.2f}\n p_work={:.2e} p_holi={:.2e}".format(
-            correlation_work, correlation_holi, p_value_work, p_value_holi
-        )
-    )
-    print(" {}, {}, {}, {}, {},".format(
-        name_key, correlation_work, p_value_work, correlation_holi, p_value_holi
-    ))
+    # fig.set(
+    #     title="r_work={:.2f} r_holi={:.2f}\n p_work={:.2e} p_holi={:.2e}".format(
+    #         correlation_work, correlation_holi, p_value_work, p_value_holi
+    #     )
+    # )
+
+
+    # テキストを図の上に追加
+    ax = plt.gca()
+    ax.text(0.65, 0.9, 'social sensor performance on workday\n: {:.2f}\nsocial sensor performance on holiday\n: {:.2f}'.format(correlation_work,correlation_holi), transform=ax.transAxes,
+            fontsize=9, verticalalignment='top')
+    plt.show()
+
     save_PATH = (
         "/home/is/shuntaro-o/dev/compare_population_and_tweet_number/outputs/perday/work_holi/"
         + name_key
