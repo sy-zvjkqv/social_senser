@@ -261,6 +261,7 @@ if (p_value<=0.05):
         ci=None,
         scatter=False,
         color='#2ca02c',
+        line_kws={"linestyle": "dashed"}
     )
 else:
     fig = sns.regplot(
@@ -270,8 +271,10 @@ else:
         ci=None,
         scatter=False,
         color='#2ca02c',
-        fit_reg=False
+        fit_reg=False,
+        
     )
+plt.gca().yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, pos: f'{x:.0f}'))
 figure = fig.get_figure()
 figure.set_size_inches(8, 8)
 save_PATH = (
@@ -567,6 +570,7 @@ for i in range(0, len(list_mobile)):
             ci=None,
             scatter=False,
             color='#2ca02c',
+            line_kws={"linestyle": "dashed"}
         )
     else:
         fig = sns.regplot(
@@ -576,7 +580,8 @@ for i in range(0, len(list_mobile)):
             ci=None,
             scatter=False,
             color='#2ca02c',
-            fit_reg=False
+            fit_reg=False,
+            
         )
 
 
